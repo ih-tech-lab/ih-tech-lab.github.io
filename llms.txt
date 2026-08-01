@@ -1,0 +1,18 @@
+# IH Tech
+
+> IH Tech is an AI-native software agency. Agent architectures, AI-accelerated delivery, technical due diligence, and legacy modernization on Azure and AWS.
+
+IH Tech is a software agency based in Sarajevo, Bosnia and Herzegovina.
+Contact: info@ihtech.ba
+
+## What we do
+
+- **AI advisory and strategy** — We act as the senior AI technical authority on enterprise engagements — the person in the room who can say whether a plan is buildable before anyone commits to it.
+- **AI enablement and workshops** — Tooling does not change how a team ships; practice does. We leave behind proficiency standards and a working evaluation practice, not a slide deck.
+- **Agentic product development** — We design agent systems that do real work: separated planning, implementation and review roles, wired into the systems a business already runs. Discovery moves in days.
+- **Platform and tooling** — The leverage is usually in the tool nobody has built yet — migration tooling, evaluation platforms, and internal assistants wired into systems a company already pays for.
+- **Legacy modernization and cloud** — Most AI programmes stall on the estate underneath them. We modernize what is already there, so the new work has something solid to stand on.
+
+## Pages
+
+- [Home](https://ihtech.ba/)
