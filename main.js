@@ -12,30 +12,71 @@
  *    Reduced motion skips straight to the final state; nothing fades, nothing
  *    is withheld.
  */
-import { animate, createTimeline, createDrawable, stagger, utils } from './anime.esm.js';
+import {
+  createTimeline,
+  createDrawable,
+  createMotionPath,
+  cubicBezier,
+  stagger,
+  utils,
+} from './anime.esm.js';
 
 const root = document.documentElement;
-const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let signatureEase;
+let settleEase;
 
 /** Show everything, unconditionally. The fallback for reduced motion and for failure. */
 function revealAll() {
   root.classList.remove('js');
-  for (const el of document.querySelectorAll('.reveal')) {
+
+  for (const el of document.querySelectorAll(
+    '.hero-figure .guide, .hero-figure .edge, .hero-figure .ring, .hero-figure .egress, .hero-figure .hub, .hero-figure .node, .hero-figure .packet, .method-route, .route-port, .contact-node, .chips li'
+  )) {
+    el.style.removeProperty('opacity');
+    el.style.removeProperty('transform');
+    el.style.removeProperty('stroke-dasharray');
+    el.style.removeProperty('stroke-dashoffset');
+    el.removeAttribute('stroke-dasharray');
+    el.removeAttribute('stroke-dashoffset');
+  }
+
+  for (const el of document.querySelectorAll('.reveal, .hero h1 span')) {
     el.style.opacity = '1';
     el.style.transform = 'none';
   }
 }
 
-/** Sticky header hairline, which only appears once the page has actually moved. */
+// The head's tiny classic-script guard can call this even when an animation
+// fails after setup. Module-load failures still fall back by removing `.js`.
+window.__ihRevealAll = revealAll;
+
+/** Disable motion after an asynchronous failure without losing page content. */
+function disableMotion(error) {
+  revealAll();
+  console.error('[ihtech.ba] motion disabled:', error);
+}
+
+/** Keep the sticky header visually quiet until it separates from the page. */
 function stickyHeader() {
   const header = document.querySelector('.site-header');
   if (!header) return;
-  const sentinel = document.createElement('div');
+
+  const sentinel = document.createElement('span');
   sentinel.setAttribute('aria-hidden', 'true');
-  document.body.prepend(sentinel);
+  sentinel.style.cssText =
+    'position:absolute;inset-block-start:0;inline-size:1px;block-size:1px;pointer-events:none';
+  header.before(sentinel);
+  header.setAttribute('data-stuck', 'false');
+
   new IntersectionObserver(
-    ([entry]) => header.setAttribute('data-stuck', String(!entry.isIntersecting)),
-    { rootMargin: '0px' }
+    ([entry]) => {
+      if (!entry) return;
+      const nextState = String(!entry.isIntersecting);
+      if (header.getAttribute('data-stuck') !== nextState) {
+        header.setAttribute('data-stuck', nextState);
+      }
+    },
+    { rootMargin: '-1px 0px 0px 0px' }
   ).observe(sentinel);
 }
 
@@ -46,14 +87,15 @@ function stickyHeader() {
  */
 function heroIntro() {
   const heading = document.querySelector('.hero h1');
+  let wordCount = 0;
   if (heading) {
-    const words = heading.textContent.split(' ');
+    const words = heading.textContent.trim().split(/\s+/);
+    wordCount = words.length;
     heading.textContent = '';
     for (const word of words) {
       const span = document.createElement('span');
       span.textContent = word;
       span.style.display = 'inline-block';
-      span.style.willChange = 'transform, opacity';
       heading.append(span, document.createTextNode(' '));
     }
     // The heading itself becomes visible the moment it is split; the words it
@@ -63,69 +105,110 @@ function heroIntro() {
     utils.set(heading.querySelectorAll('span'), { opacity: 0 });
   }
 
-  createTimeline({ defaults: { ease: 'out(3)' } })
-    .add('.hero .kicker', { opacity: [0, 1], y: [12, 0], duration: 600 })
+  const wordGap = wordCount > 1 ? Math.min(36, 360 / (wordCount - 1)) : 0;
+  createTimeline({ defaults: { ease: signatureEase } })
+    .add('.hero .kicker', { opacity: [0, 1], y: [10, 0], duration: 420 })
     .add(
       '.hero h1 span',
-      { opacity: [0, 1], y: [26, 0], duration: 850, delay: stagger(38) },
-      '-=350'
+      { opacity: [0, 1], y: [18, 0], duration: 620, delay: stagger(wordGap) },
+      '-=220'
     )
-    .add('.hero-lead', { opacity: [0, 1], y: [16, 0], duration: 700 }, '-=550')
+    .add('.hero-lead', { opacity: [0, 1], y: [12, 0], duration: 480 }, '-=380')
     .add(
       '.hero-actions .btn',
-      { opacity: [0, 1], y: [14, 0], duration: 600, delay: stagger(90) },
-      '-=450'
+      { opacity: [0, 1], y: [10, 0], duration: 380, delay: stagger(80) },
+      '-=260'
     );
 }
 
-/**
- * The orchestration diagram: edges draw themselves, nodes land, then packets
- * run the edges on a loop. The loop is the whole point — a static diagram says
- * "architecture", a moving one says "this thing is running".
- */
+/** Run the orchestration diagram through one finite setup, action and resolution. */
 function heroDiagram() {
   const figure = document.querySelector('.hero-figure svg');
   if (!figure) return;
 
+  const guides = createDrawable('.hero-figure .guide');
   const edges = createDrawable('.hero-figure .edge');
-
-  createTimeline({ defaults: { ease: 'out(3)' } })
-    .add('.hero-figure .hub', { opacity: [0, 1], scale: [0.82, 1], duration: 700 })
-    .add(edges, { draw: ['0 0', '0 1'], duration: 900, delay: stagger(110) }, '-=350')
+  const ring = createDrawable('.hero-figure .ring');
+  const egress = createDrawable('.hero-figure .egress');
+  const timeline = createTimeline({ defaults: { ease: signatureEase } })
+    .add(guides, {
+      draw: ['0 0', '0 1'],
+      opacity: [0, 0.78],
+      duration: 420,
+      delay: stagger(60),
+    })
+    .add('.hero-figure .hub', { opacity: [0, 1], scale: [0.94, 1], duration: 520 }, '-=260')
+    .add(edges, { draw: ['0 0', '0 1'], duration: 640, delay: stagger(70) }, '-=220')
     .add(
       '.hero-figure .node',
-      { opacity: [0, 1], scale: [0.6, 1], duration: 650, delay: stagger(90) },
-      '-=700'
+      { opacity: [0, 1], scale: [0.9, 1], duration: 440, delay: stagger(64) },
+      '-=440'
     )
-    .add('.hero-figure .ring', { opacity: [0, 0.75], duration: 800 }, '-=600');
+    .add(ring, { draw: ['0 0', '0 1'], opacity: [0, 0.64], duration: 460 }, '-=300');
 
-  animate('.hero-figure .ring', {
-    rotate: 360,
-    duration: 26000,
-    ease: 'linear',
-    loop: true,
-  });
-
-  for (const packet of document.querySelectorAll('.hero-figure .packet')) {
-    const path = document.querySelector(`#${packet.dataset.edge}`);
+  const packets = [...figure.querySelectorAll('.packet')];
+  for (const [index, packet] of packets.entries()) {
+    const path = figure.querySelector(`#${packet.dataset.edge}`);
     if (!path) continue;
-    animate(packet, {
-      x: [Number(path.getAttribute('x1')), Number(path.getAttribute('x2'))],
-      y: [Number(path.getAttribute('y1')), Number(path.getAttribute('y2'))],
-      opacity: [0, 1, 1, 0],
-      duration: 2200,
-      delay: Number(packet.dataset.delay ?? 0),
-      loop: true,
-      ease: 'inOut(2)',
-    });
+    timeline.add(
+      packet,
+      {
+        ...createMotionPath(path),
+        opacity: [0, 1, 1, 0],
+        duration: 880,
+        ease: settleEase,
+      },
+      1120 + index * 76
+    );
   }
 
-  animate('.hero-figure .hub', {
-    scale: [1, 1.04, 1],
-    duration: 3600,
-    loop: true,
-    ease: 'inOut(2)',
+  timeline.add(
+    '.hero-figure .hub',
+    { scale: [1, 1.018, 1], duration: 520, ease: settleEase },
+    1880
+  );
+  timeline.add(egress, { draw: ['0 0', '0 1'], duration: 380 }, 1920);
+}
+
+/** Play one reveal group and its optional route detail as a single event. */
+function playRevealGroup(entry, group) {
+  const peers = [...document.querySelectorAll(group.selector)].filter(
+    (el) => el.parentElement === entry.target.parentElement
+  );
+  const detailRoots = group.detailRoot === 'parent' ? [entry.target.parentElement] : peers;
+  const details = group.detail
+    ? detailRoots.flatMap((el) => (el ? [...el.querySelectorAll(group.detail)] : []))
+    : [];
+  let detailTransform = { scale: [0.84, 1] };
+  if (group.detailAxis === 'x') detailTransform = { scaleX: [0, 1] };
+  if (group.detailAxis === 'route') {
+    detailTransform = window.matchMedia('(max-width: 820px)').matches
+      ? { scaleY: [0, 1] }
+      : { scaleX: [0, 1] };
+  }
+  const peerGap = peers.length > 1 ? Math.min(group.gap, 360 / (peers.length - 1)) : 0;
+  const detailGap = details.length > 1 ? Math.min(32, 300 / (details.length - 1)) : 0;
+  const timeline = createTimeline({ defaults: { ease: signatureEase } }).add(peers, {
+    opacity: [0, 1],
+    ...(group.x === undefined ? {} : { x: [group.x, 0] }),
+    ...(group.y === undefined ? {} : { y: [group.y, 0] }),
+    ...(group.scale === undefined ? {} : { scale: [group.scale, 1] }),
+    duration: group.scale === undefined ? 460 : 360,
+    delay: stagger(peerGap),
   });
+  if (details.length > 0) {
+    timeline.add(
+      details,
+      {
+        opacity: [0, 1],
+        ...detailTransform,
+        duration: 320,
+        delay: stagger(detailGap),
+      },
+      '-=180'
+    );
+  }
+  return peers;
 }
 
 /**
@@ -137,33 +220,33 @@ function heroDiagram() {
  * scrubbing would be the reason to reach for `onScroll`, and nothing here
  * scrubs.
  *
- * @param {Array<{ selector: string, y?: number, scale?: number, gap: number }>} groups
+ * @param {Array<{ selector: string, x?: number, y?: number, scale?: number, gap: number, initial?: boolean, detail?: string, detailRoot?: 'parent', detailAxis?: 'x' | 'route' }>} groups
  */
 function revealOnScroll(groups) {
+  const played = new WeakSet();
   const observer = new IntersectionObserver(
     (entries, self) => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        const group = groups.find((g) => entry.target.matches(g.selector));
-        if (!group) continue;
-        const peers = [...document.querySelectorAll(group.selector)].filter((el) =>
-          el.parentElement === entry.target.parentElement
-        );
-        animate(peers, {
-          opacity: [0, 1],
-          ...(group.y === undefined ? {} : { y: [group.y, 0] }),
-          ...(group.scale === undefined ? {} : { scale: [group.scale, 1] }),
-          duration: group.scale === undefined ? 750 : 520,
-          delay: stagger(group.gap),
-          ease: 'out(3)',
-        });
-        for (const peer of peers) self.unobserve(peer);
+      try {
+        for (const entry of entries) {
+          if (!entry.isIntersecting || played.has(entry.target)) continue;
+          const group = groups.find((g) => entry.target.matches(g.selector));
+          if (!group) continue;
+          const peers = playRevealGroup(entry, group);
+          for (const peer of peers) {
+            played.add(peer);
+            self.unobserve(peer);
+          }
+        }
+      } catch (error) {
+        self.disconnect();
+        disableMotion(error);
       }
     },
     { rootMargin: '0px 0px -80px 0px', threshold: 0.05 }
   );
 
   for (const group of groups) {
+    if (group.initial) continue;
     for (const el of document.querySelectorAll(group.selector)) observer.observe(el);
   }
 
@@ -180,6 +263,10 @@ function revealOnScroll(groups) {
 }
 
 try {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  signatureEase = cubicBezier(0.2, 0, 0, 1);
+  settleEase = cubicBezier(0.4, 0, 0.2, 1);
+
   if (reduced) {
     revealAll();
     stickyHeader();
@@ -188,17 +275,35 @@ try {
     heroIntro();
     heroDiagram();
     revealOnScroll([
-      { selector: '.section-head', y: 20, gap: 0 },
-      { selector: '.card', y: 28, gap: 70 },
-      { selector: '.step', y: 22, gap: 80 },
-      { selector: '.stack-group', y: 20, gap: 90 },
-      { selector: '.community', y: 24, gap: 0 },
-      { selector: '.chips li', scale: 0.92, gap: 24 },
-      { selector: '.contact-panel', y: 24, gap: 0 },
+      {
+        selector: '.hero .kicker, .hero h1, .hero-lead, .hero-actions .btn',
+        gap: 0,
+        initial: true,
+      },
+      { selector: '.section-head', y: 16, gap: 0 },
+      { selector: '.card', y: 20, gap: 64, detail: '.route-port' },
+      {
+        selector: '.step',
+        y: 18,
+        gap: 72,
+        detail: '.method-route',
+        detailRoot: 'parent',
+        detailAxis: 'route',
+      },
+      { selector: '.stack-group', y: 16, gap: 70, detail: '.chips li' },
+      { selector: '.production-lead', y: 16, gap: 0 },
+      { selector: '.production-item', y: 16, gap: 55 },
+      { selector: '.production-note', y: 14, gap: 0 },
+      { selector: '.production-cta', y: 14, gap: 0 },
+      { selector: '.markets-lead', y: 16, gap: 0 },
+      { selector: '.market', y: 20, gap: 70 },
+      { selector: '.community', y: 18, gap: 0 },
+      { selector: '.contact-panel', y: 18, gap: 0, detail: '.contact-node' },
     ]);
   }
 } catch (error) {
   // An animation failure must degrade to a readable page, never to a blank one.
-  revealAll();
-  console.error('[ihtech.ba] motion disabled:', error);
+  disableMotion(error);
+} finally {
+  window.__ihMotionReady = true;
 }
