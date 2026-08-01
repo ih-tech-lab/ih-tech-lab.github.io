@@ -118,7 +118,11 @@ function heroIntro() {
       '.hero-actions .btn',
       { opacity: [0, 1], y: [10, 0], duration: 380, delay: stagger(80) },
       '-=260'
-    );
+    )
+    // Last, and after the diagram has drawn itself: the caption is the claim
+    // the diagram just made, so it should read as the conclusion rather than
+    // arrive alongside the setup.
+    .add('.hero-caption', { opacity: [0, 1], y: [10, 0], duration: 460 }, 1500);
 }
 
 /** Run the orchestration diagram through one finite setup, action and resolution. */
@@ -276,7 +280,7 @@ try {
     heroDiagram();
     revealOnScroll([
       {
-        selector: '.hero .kicker, .hero h1, .hero-lead, .hero-actions .btn',
+        selector: '.hero .kicker, .hero h1, .hero-lead, .hero-actions .btn, .hero-caption',
         gap: 0,
         initial: true,
       },

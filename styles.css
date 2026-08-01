@@ -379,6 +379,26 @@ svg {
   transform: translateY(1px) scale(0.985);
 }
 
+/*
+ * The claim under the diagram. Small and quiet on purpose: it is a caption, so
+ * it sits at the smallest step and in the muted tone, and it takes the diagram's
+ * measure rather than the page's.
+ */
+.hero-caption {
+  max-width: 44ch;
+  margin-block-start: clamp(1rem, 2vw, 1.5rem);
+  color: var(--muted);
+  font-size: var(--step--1);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+@media (max-width: 900px) {
+  .hero-caption {
+    max-width: none;
+  }
+}
+
 .hero-figure {
   position: relative;
   width: 100%;
@@ -1281,7 +1301,27 @@ section {
     max-width: 14ch;
   }
 
-  .hero-figure {
+  /*
+ * The claim under the diagram. Small and quiet on purpose: it is a caption, so
+ * it sits at the smallest step and in the muted tone, and it takes the diagram's
+ * measure rather than the page's.
+ */
+.hero-caption {
+  max-width: 44ch;
+  margin-block-start: clamp(1rem, 2vw, 1.5rem);
+  color: var(--muted);
+  font-size: var(--step--1);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+@media (max-width: 900px) {
+  .hero-caption {
+    max-width: none;
+  }
+}
+
+.hero-figure {
     width: min(100%, 37rem);
     margin-inline: auto;
   }
@@ -1447,7 +1487,27 @@ section {
     width: 100%;
   }
 
-  .hero-figure {
+  /*
+ * The claim under the diagram. Small and quiet on purpose: it is a caption, so
+ * it sits at the smallest step and in the muted tone, and it takes the diagram's
+ * measure rather than the page's.
+ */
+.hero-caption {
+  max-width: 44ch;
+  margin-block-start: clamp(1rem, 2vw, 1.5rem);
+  color: var(--muted);
+  font-size: var(--step--1);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+@media (max-width: 900px) {
+  .hero-caption {
+    max-width: none;
+  }
+}
+
+.hero-figure {
     margin-block-start: 0.5rem;
   }
 
