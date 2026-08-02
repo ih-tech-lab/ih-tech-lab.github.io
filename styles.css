@@ -835,8 +835,7 @@ section {
 /* --- production: the prototype-to-production gap ------------------------ */
 
 #production {
-  background:
-    linear-gradient(180deg, oklch(0.2 0.021 245 / 0.55), transparent 60%), var(--paper);
+  background: linear-gradient(180deg, oklch(0.2 0.021 245 / 0.55), transparent 60%), var(--paper);
 }
 
 #production .section-head h2 {
@@ -1306,22 +1305,22 @@ section {
  * it sits at the smallest step and in the muted tone, and it takes the diagram's
  * measure rather than the page's.
  */
-.hero-caption {
-  max-width: 44ch;
-  margin-block-start: clamp(1rem, 2vw, 1.5rem);
-  color: var(--muted);
-  font-size: var(--step--1);
-  line-height: 1.55;
-  text-wrap: pretty;
-}
-
-@media (max-width: 900px) {
   .hero-caption {
-    max-width: none;
+    max-width: 44ch;
+    margin-block-start: clamp(1rem, 2vw, 1.5rem);
+    color: var(--muted);
+    font-size: var(--step--1);
+    line-height: 1.55;
+    text-wrap: pretty;
   }
-}
 
-.hero-figure {
+  @media (max-width: 900px) {
+    .hero-caption {
+      max-width: none;
+    }
+  }
+
+  .hero-figure {
     width: min(100%, 37rem);
     margin-inline: auto;
   }
@@ -1492,22 +1491,22 @@ section {
  * it sits at the smallest step and in the muted tone, and it takes the diagram's
  * measure rather than the page's.
  */
-.hero-caption {
-  max-width: 44ch;
-  margin-block-start: clamp(1rem, 2vw, 1.5rem);
-  color: var(--muted);
-  font-size: var(--step--1);
-  line-height: 1.55;
-  text-wrap: pretty;
-}
-
-@media (max-width: 900px) {
   .hero-caption {
-    max-width: none;
+    max-width: 44ch;
+    margin-block-start: clamp(1rem, 2vw, 1.5rem);
+    color: var(--muted);
+    font-size: var(--step--1);
+    line-height: 1.55;
+    text-wrap: pretty;
   }
-}
 
-.hero-figure {
+  @media (max-width: 900px) {
+    .hero-caption {
+      max-width: none;
+    }
+  }
+
+  .hero-figure {
     margin-block-start: 0.5rem;
   }
 
