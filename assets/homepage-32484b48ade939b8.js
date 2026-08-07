@@ -19,7 +19,7 @@ import {
   cubicBezier,
   stagger,
   utils,
-} from './anime.esm.js';
+} from '/assets/anime-58d22586c6248fad.js';
 
 const root = document.documentElement;
 let signatureEase;

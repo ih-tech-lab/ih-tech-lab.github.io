@@ -1,0 +1,831 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-39840X1GXN"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-39840X1GXN');
+</script>
+<title>Modernizing legacy systems with AI agents</title>
+<meta name="description" content="A control-loop strategy for AI-agent modernization: structure first, plans as reviewed prompts, machine-generated parity evidence, and a clear fit test.">
+<link rel="canonical" href="https://ihtech.ba/field-guides/agentic-legacy-modernization/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="author" content="IH Tech">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="IH Tech">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Modernizing legacy systems with AI agents">
+<meta property="og:description" content="A control-loop strategy for AI-agent modernization: structure first, plans as reviewed prompts, machine-generated parity evidence, and a clear fit test.">
+<meta property="og:url" content="https://ihtech.ba/field-guides/agentic-legacy-modernization/">
+<meta property="og:image" content="https://ihtech.ba/field-guides/agentic-legacy-modernization/og-agentic-legacy-modernization-5c34b6664efb62f3.png">
+<meta property="og:image:alt" content="A dark graphite card headed Field Guide 001. The title reads “Modernizing legacy systems with AI agents” beside a four-box control-loop diagram whose single cyan path returns from the fourth box to the second.">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Modernizing legacy systems with AI agents">
+<meta name="twitter:description" content="A control-loop strategy for AI-agent modernization: structure first, plans as reviewed prompts, machine-generated parity evidence, and a clear fit test.">
+<meta name="twitter:image" content="https://ihtech.ba/field-guides/agentic-legacy-modernization/og-agentic-legacy-modernization-5c34b6664efb62f3.png">
+<meta name="twitter:image:alt" content="A dark graphite card headed Field Guide 001. The title reads “Modernizing legacy systems with AI agents” beside a four-box control-loop diagram whose single cyan path returns from the fourth box to the second.">
+<meta name="theme-color" content="#2b3038">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="stylesheet" href="/field-guides/agentic-legacy-modernization/styles-2f20ceae955b7532.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfessionalService","@id":"https://ihtech.ba/#organization","name":"IH Tech","url":"https://ihtech.ba/","logo":"https://ihtech.ba/assets/logo-512-2dc36b9d33bead51.png","email":"info@ihtech.ba","address":{"@type":"PostalAddress","addressLocality":"Sarajevo","addressCountry":"BA"},"sameAs":["https://github.com/ih-tech-lab"]},{"@type":"WebSite","@id":"https://ihtech.ba/#website","url":"https://ihtech.ba/","name":"IH Tech","publisher":{"@id":"https://ihtech.ba/#organization"},"inLanguage":"en"},{"@type":"TechArticle","@id":"https://ihtech.ba/field-guides/agentic-legacy-modernization/#article","url":"https://ihtech.ba/field-guides/agentic-legacy-modernization/","headline":"Modernizing legacy systems with AI agents","description":"A control-loop strategy for AI-agent modernization: structure first, plans as reviewed prompts, machine-generated parity evidence, and a clear fit test.","inLanguage":"en","image":"https://ihtech.ba/field-guides/agentic-legacy-modernization/og-agentic-legacy-modernization-5c34b6664efb62f3.png","author":{"@id":"https://ihtech.ba/#organization"},"publisher":{"@id":"https://ihtech.ba/#organization"},"isPartOf":{"@id":"https://ihtech.ba/#website"},"datePublished":"2026-08-07","dateModified":"2026-08-07"},{"@type":"BreadcrumbList","@id":"https://ihtech.ba/field-guides/agentic-legacy-modernization/#breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"IH Tech","item":"https://ihtech.ba/"},{"@type":"ListItem","position":2,"name":"Field guides","item":"https://ihtech.ba/field-guides/"},{"@type":"ListItem","position":3,"name":"Modernizing legacy systems with AI agents"}]}]}</script>
+<script type="module" src="/field-guides/agentic-legacy-modernization/interaction-1bfe22d64f29edc5.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#guide">Skip to the guide</a>
+
+<header class="masthead">
+  <div class="page">
+    <p class="print-only mono">IH Tech · Field Guide 001 · https://ihtech.ba/field-guides/agentic-legacy-modernization/</p>
+    <div class="masthead-band">
+      <a class="lockup" href="/field-guides/">
+        <svg class="lockup-mark" width="26" height="26" viewBox="0 0 256 256" aria-hidden="true" focusable="false"><path d="M16 16L188 16L152 92L92 92L92 152L16 188Z M240 16L240 188L164 152L164 92L104 92L68 16Z M240 240L68 240L104 164L164 164L164 104L240 68Z M16 240L16 68L92 104L92 164L152 164L188 240Z" fill="currentColor" fill-rule="evenodd"/></svg>
+        <span class="lockup-name"><strong>IH Tech</strong> Field guides</span>
+      </a>
+      <p class="mono reference">FG-001</p>
+    </div>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">IH Tech</a></li>
+        <li><a href="/field-guides/">Field guides</a></li>
+        <li><span aria-current="page">Modernizing legacy systems with AI agents</span></li>
+      </ol>
+    </nav>
+    <div class="masthead-title">
+      <p class="mono label accent eyebrow">Field Guide 001 · IH Tech</p>
+      <h1>Modernizing legacy systems with AI agents</h1>
+      <p class="deck">A control-loop strategy for AI-agent modernization: structure first, plans as reviewed prompts, machine-generated parity evidence, and a clear fit test.</p>
+      <ul class="meta">
+      <li>Published <time datetime="2026-08-07">7 August 2026</time></li>
+      <li>Updated <time datetime="2026-08-07">7 August 2026</time></li>
+      <li>14 min read</li>
+      <li>English</li>
+    </ul>
+    </div>
+  </div>
+</header>
+
+<nav class="routes" aria-label="Reading routes">
+  <div class="page">
+    <p class="mono label">Three paths through this guide</p>
+    <div class="routes-grid">
+      <article class="route">
+        <p class="mono route-id">R1 · ≈3 min</p>
+        <p class="route-name">Executive conclusion</p>
+        <ol class="route-sections">
+          <li><a href="#the-decision" data-route="exec">The decision</a></li>
+          <li><a href="#the-short-answer" data-route="exec">The short answer</a></li>
+          <li><a href="#when-it-does-not-apply" data-route="exec">When it does not apply</a></li>
+          <li><a href="#what-we-have-seen" data-route="exec">What we have seen</a></li>
+        </ol>
+      </article>
+      <article class="route">
+        <p class="mono route-id">R2 · ≈8 min</p>
+        <p class="route-name">Technical depth</p>
+        <ol class="route-sections">
+          <li><a href="#why-modernizations-stall" data-route="tech">Why modernizations stall</a></li>
+          <li><a href="#the-control-loop" data-route="tech">The control loop</a></li>
+          <li><a href="#four-structural-principles" data-route="tech">Four structural principles</a></li>
+          <li><a href="#trade-offs" data-route="tech">Trade-offs you are accepting</a></li>
+          <li><a href="#method-assumptions-limitations" data-route="tech">Method and limitations</a></li>
+        </ol>
+      </article>
+      <article class="route">
+        <p class="mono route-id">R3 · ≈3 min</p>
+        <p class="route-name">Immediate action</p>
+        <ol class="route-sections">
+          <li><a href="#put-it-to-work" data-route="act">Put it to work</a></li>
+          <li><a href="#failure-modes" data-route="act">Failure modes</a></li>
+          <li><a href="#what-changes-for-your-team" data-route="act">What changes for your team</a></li>
+        </ol>
+      </article>
+    </div>
+  </div>
+</nav>
+
+<div class="shell">
+  <nav class="rail" aria-label="Contents">
+    <p class="mono label rail-heading">Contents</p>
+    <ol class="rail-list">
+      <li><a href="#the-decision">The decision<span class="mono rail-lens">Exec</span></a></li>
+      <li><a href="#the-short-answer">The short answer<span class="mono rail-lens">Exec</span></a></li>
+      <li><a href="#why-modernizations-stall">Why modernizations stall<span class="mono rail-lens">Tech</span></a></li>
+      <li><a href="#the-control-loop">The control loop<span class="mono rail-lens">Tech</span></a></li>
+      <li><a href="#four-structural-principles">Four structural principles<span class="mono rail-lens">Tech</span></a></li>
+      <li><a href="#what-changes-for-your-team">What changes for your team<span class="mono rail-lens">Act</span></a></li>
+      <li><a href="#trade-offs">Trade-offs you are accepting<span class="mono rail-lens">Tech</span></a></li>
+      <li><a href="#failure-modes">Failure modes<span class="mono rail-lens">Act</span></a></li>
+      <li><a href="#when-it-does-not-apply">When it does not apply<span class="mono rail-lens">Exec</span></a></li>
+      <li><a href="#put-it-to-work">Put it to work<span class="mono rail-lens">Act</span></a></li>
+      <li><a href="#what-we-have-seen">What we have seen<span class="mono rail-lens">Exec</span></a></li>
+      <li><a href="#method-assumptions-limitations">Method and limitations<span class="mono rail-lens">Tech</span></a></li>
+    </ol>
+  </nav>
+  <main id="guide">
+  <section class="section">
+    <div class="section-head">
+      <h2 id="the-decision">The decision</h2>
+      <p class="mono lens"><span class="vh">Reading route </span>Exec</p>
+    </div>
+    <p>You are responsible for a system the business still depends on every day, built on a stack that is now a liability: a framework past its support window, an architecture nobody fully remembers, a codebase where every change is priced in fear. AI coding agents are on the table. The question is not whether they can write the new code. They can. The question is whether an agent-driven modernization program will actually finish, or stall at 70% the way most rewrites do.</p>
+    <aside class="pull"><p class="lead">This guide gives you the strategy we use to answer that question: when agent-driven modernization works, the operating model that makes it work, the trade-offs you accept, the failure signals to watch, and what to do in your next planning session.</p></aside>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2 id="the-short-answer">The short answer</h2>
+      <p class="mono lens"><span class="vh">Reading route </span>Exec</p>
+    </div>
+    <p class="lead">Run the modernization with AI agents <strong>if the legacy system can serve as the specification</strong>: the same product on a modern stack, not a new product inspired by the old one. Then invert the usual order of work.</p>
+    <ol class="ledger">
+      <li>
+        <span class="mono ledger-num" aria-hidden="true">01</span>
+        <div class="ledger-body">
+          <p class="ledger-lead"><strong>Structure first, code last</strong></p>
+          <p>Agents inventory, trace and score the legacy estate before anyone migrates anything.</p>
+        </div>
+      </li>
+      <li>
+        <span class="mono ledger-num" aria-hidden="true">02</span>
+        <div class="ledger-body">
+          <p class="ledger-lead"><strong>Plans are the unit of review</strong></p>
+          <p>Agents draft bounded migration plans; humans review plans, not piles of generated diffs. A reviewed plan is the best structured prompt your team will ever write, which is why nobody on the team needs to be a prompt engineer.</p>
+        </div>
+      </li>
+      <li>
+        <span class="mono ledger-num" aria-hidden="true">03</span>
+        <div class="ledger-body">
+          <p class="ledger-lead"><strong>Parity is machine-generated evidence</strong></p>
+          <p>not two developers reading two codebases side by side. Agents generate the checks; humans review the flags.</p>
+        </div>
+      </li>
+      <li>
+        <span class="mono ledger-num" aria-hidden="true">04</span>
+        <div class="ledger-body">
+          <p class="ledger-lead"><strong>Contracts replace coordination</strong></p>
+          <p>An agent cannot sit at the table in your standup. Every cross-team dependency you replace with a written, mocked contract is a dependency an agent can work against, and a meeting you no longer schedule.</p>
+        </div>
+      </li>
+    </ol>
+    <aside class="exclusion">
+      <p class="mono label accent">Does not apply</p>
+      <p>When it does <strong>not</strong> apply:</p>
+      <ul class="port-list">
+      <li>if more than roughly a fifth of the target is new business requirements</li>
+      <li>if screens and workflows will not map roughly one-to-one</li>
+      <li>if the legacy code is too opaque to derive behavior from</li>
+      <li>or if you are consolidating several systems into one</li>
+    </ul>
+      <p>Those are product-design programs wearing a migration costume, and this strategy will not save them.</p>
+    </aside>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2 id="why-modernizations-stall">Why modernizations stall</h2>
+      <p class="mono lens"><span class="vh">Reading route </span>Tech</p>
+    </div>
+    <p class="lead">Every modernization starts the same way, and the start is a trap.</p>
+    <div class="phases">
+    <div class="phase">
+      <p class="mono label">Phase 01 · The honeymoon</p>
+      <p>The new codebase is clean. There is no technical debt, the tooling is modern, the first features land fast. It is genuinely <em>easier</em> to work in the new system, so early velocity is high and everyone extrapolates from it. Steering committees see the first demo in week three and pencil in a cutover date.</p>
+    </div>
+    <div class="phase">
+      <p class="mono label">Phase 02 · The middle</p>
+      <p>Now two systems exist. Every legacy change made by the team still running the old system widens the gap. Feature parity stops being a list someone wrote once and becomes a moving target nobody owns. Developers spend their days reading both codebases side by side, trying to establish whether an edge case in a twelve-year-old service was intentional, load-bearing, or dead. The work that felt like building now feels like archaeology, and velocity decays exactly when the burn-down chart says it should be accelerating.</p>
+    </div>
+    <div class="phase">
+      <p class="mono label">Phase 03 · The asymptote</p>
+      <p>The business asks the only question that matters — when can we switch the old one off? — and nobody can answer it with evidence. Parity is asserted, not proven. The last 20% of behavior costs more than the first 80%, the rewrite becomes a permanent second system, and the organization now maintains both. This is how rewrites die: not with a failed deploy, but with a parity question nobody can answer.</p>
+    </div>
+    </div>
+    <aside class="pull"><p class="lead">The root cause is almost never talent or effort. It is that <strong>the legacy system is the specification, and nobody treats it like one.</strong> It gets mined by memory, by reading, and by asking whoever has been around longest, instead of being ingested, indexed, enumerated and traced like the authoritative document it actually is.</p></aside>
+    <p>AI agents change this, but only if you aim them at the trap rather than at the honeymoon. Pointed at “write the new code faster,” agents accelerate you into the middle and leave you there with more unreviewed code. Pointed at evidence, planning and verification, they attack the three places rewrites actually die.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2 id="the-control-loop">The modernization control loop</h2>
+      <p class="mono lens"><span class="vh">Reading route </span>Tech</p>
+    </div>
+    <p>We run agent-driven modernization as a control loop with four stations. Work flows forward; evidence flows back. Humans own intent and exceptions; agents own bounded execution; plans carry the context; parity evidence closes the loop.</p>
+    <figure id="fig-loop" class="bleed figure">
+      <svg class="fig fig-wide" role="img" width="1200" height="620" viewBox="0 0 1200 620" aria-labelledby="loopTitleW loopDescW" focusable="false">
+    <title id="loopTitleW">The modernization control loop.</title>
+    <desc id="loopDescW">Four stations run left to right. Station 01, Evidence, is owned by agents and produces a locally indexed surface inventory with dependency traces. Its inventory flows to Station 02, Evaluation, where agents score each unit and architects review the sequencing into waves. Scored waves flow to Station 03, Control, where agents draft a bounded migration plan in Markdown and a human signs it; the accent bar on the path out of Station 03 is that sign-off, and execution is gated on it. The approved plan flows to Station 04, Operation, where agents execute one wave and machines generate parity evidence from response and rendering diffs, generated contract tests and shadow traffic. A single accent path returns from Station 04 to Station 03, carrying the next wave's plan, and to Station 02, carrying recalibrated scores. That return path is the loop closing.</desc>
+    <defs>
+    <marker id="arrowWorkW" markerWidth="7" markerHeight="6" refX="7" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3 L0,6 Z" class="fig-arrow-work"/></marker>
+    <marker id="arrowEvidenceW" markerWidth="7" markerHeight="6" refX="7" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3 L0,6 Z" class="fig-arrow-evidence"/></marker>
+  </defs>
+    <text x="24" y="32" class="fig-sheet">Fig. 1 · Modernization control loop</text>
+    <text x="1176" y="32" class="fig-sheet" text-anchor="end">IH Tech · FG-001</text>
+    <line x1="24" y1="44" x2="1176" y2="44" class="fig-rule-strong"/>
+    <line x1="24" y1="560" x2="1176" y2="560" class="fig-rule"/>
+    <g class="station" data-station="01">
+      <rect x="18" y="94" width="246" height="272" rx="12" class="fig-halo"/>
+      <rect x="24" y="100" width="234" height="260" rx="8" class="fig-frame"/>
+      <text x="42" y="128" class="fig-id">STATION 01</text>
+      <text x="42" y="158" class="fig-name">Evidence</text>
+      <text x="42" y="178" class="fig-verb">ingest · discover</text>
+      <line x1="42" y1="196" x2="240" y2="196" class="fig-divider"/>
+      <rect x="42" y="213" width="7" height="7" rx="1.5" class="fig-port"/>
+      <text x="58" y="222" class="fig-row">Local index, zero egress</text>
+      <rect x="42" y="241" width="7" height="7" rx="1.5" class="fig-port"/>
+      <text x="58" y="250" class="fig-row">Surface enumeration</text>
+      <rect x="42" y="269" width="7" height="7" rx="1.5" class="fig-port"/>
+      <text x="58" y="278" class="fig-row">Dependency tracing</text>
+      <rect x="42" y="297" width="7" height="7" rx="1.5" class="fig-port"/>
+      <text x="58" y="306" class="fig-row">Blast radius known</text>
+      <rect x="42" y="322" width="66" height="24" rx="4" class="fig-badge"/>
+      <text x="51" y="338" class="fig-badge-text">AGENTS</text>
+    </g>
+    <g class="station" data-station="02">
+      <rect x="324" y="94" width="246" height="272" rx="12" class="fig-halo"/>
+      <rect x="330" y="100" width="234" height="260" rx="8" class="fig-frame"/>
+      <text x="348" y="128" class="fig-id">STATION 02</text>
+      <text x="348" y="158" class="fig-name">Evaluation</text>
+      <text x="348" y="178" class="fig-verb">score · sequence</text>
+      <line x1="348" y1="196" x2="546" y2="196" class="fig-divider"/>
+      <rect x="348" y="213" width="7" height="7" rx="1.5" class="fig-port"/>
+      <text x="364" y="222" class="fig-row">Framework &amp; API risk</text>
+      <rect x="348" y="241" width="7" height="7" rx="1.5" class="fig-port"/>
+      <text x="364" y="250" class="fig-row">Business criticality</text>
+      <rect x="348" y="269" width="7" height="7" rx="1.5" class="fig-port"/>
+      <text x="364" y="278" class="fig-row">Traffic &amp; test coverage</text>
+      <rect x="348" y="297" width="7" height="7" rx="1.5" class="fig-port"/>
+      <text x="364" y="306" class="fig-row">Waves, sequenced</text>
+      <rect x="348" y="322" width="169" height="24" rx="4" class="fig-badge"/>
+      <text x="357" y="338" class="fig-badge-text">AGENTS + ARCHITECTS</text>
+    </g>
+    <g class="station" data-station="03">
+      <rect x="630" y="94" width="246" height="272" rx="12" class="fig-halo"/>
+      <rect x="636" y="100" width="234" height="260" rx="8" class="fig-frame"/>
+      <text x="654" y="128" class="fig-id">STATION 03</text>
+      <text x="654" y="158" class="fig-name">Control</text>
+      <text x="654" y="178" class="fig-verb">plan · review</text>
+      <line x1="654" y1="196" x2="852" y2="196" class="fig-divider"/>
+      <rect x="654" y="213" width="7" height="7" rx="1.5" class="fig-port"/>
+      <text x="670" y="222" class="fig-row">Plan drafted in Markdown</text>
+      <rect x="654" y="241" width="7" height="7" rx="1.5" class="fig-port"/>
+      <text x="670" y="250" class="fig-row">Parity checks named</text>
+      <rect x="654" y="269" width="7" height="7" rx="1.5" class="fig-port"/>
+      <text x="670" y="278" class="fig-row">Out of scope named</text>
+      <rect x="654" y="297" width="7" height="7" rx="1.5" class="fig-port"/>
+      <text x="670" y="306" class="fig-row">Human sign-off</text>
+      <rect x="654" y="322" width="169" height="24" rx="4" class="fig-badge"/>
+      <text x="663" y="338" class="fig-badge-text">AGENTS + HUMAN GATE</text>
+    </g>
+    <g class="station" data-station="04">
+      <rect x="936" y="94" width="246" height="272" rx="12" class="fig-halo"/>
+      <rect x="942" y="100" width="234" height="260" rx="8" class="fig-frame"/>
+      <text x="960" y="128" class="fig-id">STATION 04</text>
+      <text x="960" y="158" class="fig-name">Operation</text>
+      <text x="960" y="178" class="fig-verb">execute · verify</text>
+      <line x1="960" y1="196" x2="1158" y2="196" class="fig-divider"/>
+      <rect x="960" y="213" width="7" height="7" rx="1.5" class="fig-port"/>
+      <text x="976" y="222" class="fig-row">Bounded execution</text>
+      <rect x="960" y="241" width="7" height="7" rx="1.5" class="fig-port"/>
+      <text x="976" y="250" class="fig-row">Response &amp; render diffs</text>
+      <rect x="960" y="269" width="7" height="7" rx="1.5" class="fig-port"/>
+      <text x="976" y="278" class="fig-row">Contract tests · replay</text>
+      <rect x="960" y="297" width="7" height="7" rx="1.5" class="fig-port"/>
+      <text x="976" y="306" class="fig-row">Flags → human review</text>
+      <rect x="960" y="322" width="137" height="24" rx="4" class="fig-badge"/>
+      <text x="969" y="338" class="fig-badge-text">AGENTS + HUMANS</text>
+    </g>
+    <line x1="252" y1="232" x2="330" y2="232" class="fig-work" marker-end="url(#arrowWorkW)"/>
+    <text x="294" y="203" class="fig-path-label" text-anchor="middle">INVENTORY</text>
+    <line x1="558" y1="232" x2="636" y2="232" class="fig-work" marker-end="url(#arrowWorkW)"/>
+    <text x="600" y="196" class="fig-path-label" text-anchor="middle">SCORED</text>
+    <text x="600" y="210" class="fig-path-label" text-anchor="middle">WAVES</text>
+    <line x1="864" y1="232" x2="942" y2="232" class="fig-work" marker-end="url(#arrowWorkW)"/>
+    <text x="906" y="196" class="fig-path-label" text-anchor="middle">APPROVED</text>
+    <text x="906" y="210" class="fig-path-label" text-anchor="middle">PLAN</text>
+    <line x1="903" y1="222" x2="903" y2="254" class="fig-gate"/>
+    <rect x="900" y="219" width="6" height="6" rx="1.5" class="fig-gate-cap"/>
+    <rect x="900" y="251" width="6" height="6" rx="1.5" class="fig-gate-cap"/>
+    <text x="903" y="276" class="fig-gate-label" text-anchor="middle">HUMAN</text>
+    <text x="903" y="290" class="fig-gate-label" text-anchor="middle">SIGN-OFF</text>
+    <path class="fig-evidence" pathLength="1" marker-end="url(#arrowEvidenceW)" d="M1059,360 V480 A8,8 0 0 1 1051,488 H455 A8,8 0 0 0 447,480 V360"/>
+    <path class="fig-evidence" pathLength="1" marker-end="url(#arrowEvidenceW)" d="M753,488 V360"/>
+    <text x="459" y="404" class="fig-return-label">RECALIBRATED</text>
+    <text x="459" y="418" class="fig-return-label">SCORES</text>
+    <text x="765" y="404" class="fig-return-label">NEXT WAVE'S</text>
+    <text x="765" y="418" class="fig-return-label">PLAN</text>
+    <text x="903" y="512" class="fig-trunk-label" text-anchor="middle">EVIDENCE RETURN PATH</text>
+    <line x1="24" y1="582" x2="54" y2="582" class="fig-work" marker-end="url(#arrowWorkW)"/>
+    <text x="66" y="586" class="fig-legend-label">Work flows forward</text>
+    <line x1="424" y1="582" x2="454" y2="582" class="fig-evidence-static" marker-end="url(#arrowEvidenceW)"/>
+    <text x="466" y="586" class="fig-legend-label">Evidence flows back</text>
+    <line x1="839" y1="574" x2="839" y2="590" class="fig-gate"/>
+    <rect x="836" y="571" width="6" height="6" rx="1.5" class="fig-gate-cap"/>
+    <rect x="836" y="587" width="6" height="6" rx="1.5" class="fig-gate-cap"/>
+    <text x="866" y="586" class="fig-legend-label">Human control point</text>
+  </svg>
+      <svg class="fig fig-narrow" role="img" width="360" height="920" viewBox="0 0 360 920" aria-labelledby="loopTitleN loopDescN" focusable="false">
+    <title id="loopTitleN">The modernization control loop.</title>
+    <desc id="loopDescN">Four stations run left to right. Station 01, Evidence, is owned by agents and produces a locally indexed surface inventory with dependency traces. Its inventory flows to Station 02, Evaluation, where agents score each unit and architects review the sequencing into waves. Scored waves flow to Station 03, Control, where agents draft a bounded migration plan in Markdown and a human signs it; the accent bar on the path out of Station 03 is that sign-off, and execution is gated on it. The approved plan flows to Station 04, Operation, where agents execute one wave and machines generate parity evidence from response and rendering diffs, generated contract tests and shadow traffic. A single accent path returns from Station 04 to Station 03, carrying the next wave's plan, and to Station 02, carrying recalibrated scores. That return path is the loop closing.</desc>
+    <defs>
+    <marker id="arrowWorkN" markerWidth="7" markerHeight="6" refX="7" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3 L0,6 Z" class="fig-arrow-work"/></marker>
+    <marker id="arrowEvidenceN" markerWidth="7" markerHeight="6" refX="7" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L7,3 L0,6 Z" class="fig-arrow-evidence"/></marker>
+  </defs>
+    <text x="16" y="22" class="fig-sheet">Fig. 1 · Control loop</text>
+    <line x1="16" y1="34" x2="344" y2="34" class="fig-rule-strong"/>
+    <g class="station" data-station="01">
+      <rect x="10" y="50" width="324" height="144" rx="12" class="fig-halo"/>
+      <rect x="16" y="56" width="312" height="132" rx="8" class="fig-frame"/>
+      <text x="32" y="82" class="fig-id">STATION 01</text>
+      <text x="32" y="110" class="fig-name">Evidence</text>
+      <text x="32" y="130" class="fig-verb">ingest · discover</text>
+      <rect x="32" y="144" width="62" height="22" rx="4" class="fig-badge"/>
+      <text x="41" y="159" class="fig-badge-text">AGENTS</text>
+    </g>
+    <g class="station" data-station="02">
+      <rect x="10" y="238" width="324" height="144" rx="12" class="fig-halo"/>
+      <rect x="16" y="244" width="312" height="132" rx="8" class="fig-frame"/>
+      <text x="32" y="270" class="fig-id">STATION 02</text>
+      <text x="32" y="298" class="fig-name">Evaluation</text>
+      <text x="32" y="318" class="fig-verb">score · sequence</text>
+      <rect x="32" y="332" width="155" height="22" rx="4" class="fig-badge"/>
+      <text x="41" y="347" class="fig-badge-text">AGENTS + ARCHITECTS</text>
+    </g>
+    <g class="station" data-station="03">
+      <rect x="10" y="426" width="324" height="144" rx="12" class="fig-halo"/>
+      <rect x="16" y="432" width="312" height="132" rx="8" class="fig-frame"/>
+      <text x="32" y="458" class="fig-id">STATION 03</text>
+      <text x="32" y="486" class="fig-name">Control</text>
+      <text x="32" y="506" class="fig-verb">plan · review</text>
+      <rect x="32" y="520" width="155" height="22" rx="4" class="fig-badge"/>
+      <text x="41" y="535" class="fig-badge-text">AGENTS + HUMAN GATE</text>
+    </g>
+    <g class="station" data-station="04">
+      <rect x="10" y="614" width="324" height="144" rx="12" class="fig-halo"/>
+      <rect x="16" y="620" width="312" height="132" rx="8" class="fig-frame"/>
+      <text x="32" y="646" class="fig-id">STATION 04</text>
+      <text x="32" y="674" class="fig-name">Operation</text>
+      <text x="32" y="694" class="fig-verb">execute · verify</text>
+      <rect x="32" y="708" width="126" height="22" rx="4" class="fig-badge"/>
+      <text x="41" y="723" class="fig-badge-text">AGENTS + HUMANS</text>
+    </g>
+    <line x1="172" y1="188" x2="172" y2="244" class="fig-work" marker-end="url(#arrowWorkN)"/>
+    <line x1="172" y1="376" x2="172" y2="432" class="fig-work" marker-end="url(#arrowWorkN)"/>
+    <line x1="172" y1="564" x2="172" y2="620" class="fig-work" marker-end="url(#arrowWorkN)"/>
+    <text x="186" y="220" class="fig-path-label">INVENTORY</text>
+    <text x="186" y="408" class="fig-path-label">SCORED WAVES</text>
+    <line x1="158" y1="592" x2="186" y2="592" class="fig-gate"/>
+    <rect x="155" y="589" width="6" height="6" rx="1.5" class="fig-gate-cap"/>
+    <rect x="183" y="589" width="6" height="6" rx="1.5" class="fig-gate-cap"/>
+    <text x="194" y="588" class="fig-gate-label">HUMAN SIGN-OFF</text>
+    <text x="194" y="601" class="fig-gate-label">APPROVED PLAN</text>
+    <path class="fig-evidence" pathLength="1" marker-end="url(#arrowEvidenceN)" d="M172,752 V768 A8,8 0 0 0 180,776 H328 A8,8 0 0 0 336,768 V300 H328"/>
+    <path class="fig-evidence" pathLength="1" marker-end="url(#arrowEvidenceN)" d="M336,500 H328"/>
+    <text x="316" y="296" class="fig-return-label" text-anchor="end">← recalibrated scores</text>
+    <text x="316" y="496" class="fig-return-label" text-anchor="end">← next wave's plan</text>
+    <text x="254" y="794" class="fig-trunk-label" text-anchor="middle">EVIDENCE RETURN</text>
+    <line x1="16" y1="816" x2="344" y2="816" class="fig-rule"/>
+    <line x1="16" y1="836" x2="44" y2="836" class="fig-work" marker-end="url(#arrowWorkN)"/>
+    <text x="54" y="840" class="fig-legend-label">Work flows forward</text>
+    <line x1="16" y1="862" x2="44" y2="862" class="fig-evidence-static" marker-end="url(#arrowEvidenceN)"/>
+    <text x="54" y="866" class="fig-legend-label">Evidence flows back</text>
+    <line x1="30" y1="880" x2="30" y2="896" class="fig-gate"/>
+    <rect x="27" y="877" width="6" height="6" rx="1.5" class="fig-gate-cap"/>
+    <rect x="27" y="893" width="6" height="6" rx="1.5" class="fig-gate-cap"/>
+    <text x="54" y="892" class="fig-legend-label">Human control point</text>
+  </svg>
+      <figcaption>Figure 1. The modernization control loop. Work flows forward through four stations; parity evidence flows back to recalibrate scores and shape the next wave's plan. The single accent path is the return of evidence; the accent bar between Control and Operation is the human sign-off that gates execution.</figcaption>
+    </figure>
+    <div class="station-select" role="group" aria-label="Loop stations">
+      <a id="tab-01" href="#brief-01" data-station="01"><span class="glyph" aria-hidden="true"></span><span class="mono num">01</span> Evidence</a>
+      <a id="tab-02" href="#brief-02" data-station="02"><span class="glyph" aria-hidden="true"></span><span class="mono num">02</span> Evaluation</a>
+      <a id="tab-03" href="#brief-03" data-station="03"><span class="glyph" aria-hidden="true"></span><span class="mono num">03</span> Control</a>
+      <a id="tab-04" href="#brief-04" data-station="04"><span class="glyph" aria-hidden="true"></span><span class="mono num">04</span> Operation</a>
+    </div>
+    <h3 class="briefs-heading">What each station takes and produces</h3>
+    <div class="briefs">
+      <article class="brief" id="brief-01" aria-labelledby="brief-01-title">
+        <p class="brief-title" id="brief-01-title">Station 01 · Evidence</p>
+        <dl>
+        <div class="brief-row"><dt>Owner</dt><dd>Agents</dd></div>
+        <div class="brief-row"><dt>Takes</dt><dd>The legacy estate, indexed locally with zero data egress</dd></div>
+        <div class="brief-row"><dt>Produces</dt><dd>Surface inventory (endpoints, screens, jobs, integrations, infrastructure), plus dependency traces to true blast radius</dd></div>
+        <div class="brief-row"><dt>Returns to the loop</dt><dd>Nothing returns to Station 01; the inventory is the denominator of every parity claim</dd></div>
+        </dl>
+        <a class="brief-link" href="#station-01">Read Station 01 in full <span class="brief-arrow" aria-hidden="true">↓</span></a>
+      </article>
+      <article class="brief" id="brief-02" aria-labelledby="brief-02-title">
+        <p class="brief-title" id="brief-02-title">Station 02 · Evaluation</p>
+        <dl>
+        <div class="brief-row"><dt>Owner</dt><dd>Agents score; architects review the sequencing</dd></div>
+        <div class="brief-row"><dt>Takes</dt><dd>The surface inventory</dd></div>
+        <div class="brief-row"><dt>Produces</dt><dd>A composite score per unit from framework and API risk, business criticality, production traffic and existing test coverage; work sequenced into bounded waves</dd></div>
+        <div class="brief-row"><dt>Returns to the loop</dt><dd>Receives recalibrated scores from Station 04</dd></div>
+        </dl>
+        <a class="brief-link" href="#station-02">Read Station 02 in full <span class="brief-arrow" aria-hidden="true">↓</span></a>
+      </article>
+      <article class="brief" id="brief-03" aria-labelledby="brief-03-title">
+        <p class="brief-title" id="brief-03-title">Station 03 · Control</p>
+        <dl>
+        <div class="brief-row"><dt>Owner</dt><dd>Agents draft; a human reviews and signs</dd></div>
+        <div class="brief-row"><dt>Takes</dt><dd>The scored waves</dd></div>
+        <div class="brief-row"><dt>Produces</dt><dd>A bounded migration plan in Markdown (what moves, what it depends on, the target shape, the parity checks, what is out of scope), approved only when a human signs it</dd></div>
+        <div class="brief-row"><dt>Returns to the loop</dt><dd>Receives parity results that shape the next wave's plan</dd></div>
+        </dl>
+        <a class="brief-link" href="#station-03">Read Station 03 in full <span class="brief-arrow" aria-hidden="true">↓</span></a>
+      </article>
+      <article class="brief" id="brief-04" aria-labelledby="brief-04-title">
+        <p class="brief-title" id="brief-04-title">Station 04 · Operation</p>
+        <dl>
+        <div class="brief-row"><dt>Owner</dt><dd>Agents execute; humans adjudicate flags</dd></div>
+        <div class="brief-row"><dt>Takes</dt><dd>Approved plans, and only approved plans</dd></div>
+        <div class="brief-row"><dt>Produces</dt><dd>One wave executed, plus layered parity evidence: response and rendering diffs, contract tests generated from the enumerated surface, and shadow traffic where risk justifies it</dd></div>
+        <div class="brief-row"><dt>Returns to the loop</dt><dd>Closes the loop: parity results feed the next wave's planning and recalibrate the scores</dd></div>
+        </dl>
+        <a class="brief-link" href="#station-04">Read Station 04 in full <span class="brief-arrow" aria-hidden="true">↓</span></a>
+      </article>
+    </div>
+    <div class="stations">
+      <article class="station-detail">
+      <h3 id="station-01">Station 1: Evidence</h3>
+      <p class="lead">Before anything is migrated, the legacy estate is turned into something agents can reason over.</p>
+    <ul class="port-ledger">
+      <li><span class="port" aria-hidden="true"></span><p><strong>Ingestion.</strong> The legacy codebase is indexed locally, with embeddings and retrieval running inside your environment and zero data egress. For most enterprises this is not a nice-to-have: it is the difference between the security review approving the program and killing it.</p></li>
+      <li><span class="port" aria-hidden="true"></span><p><strong>Surface enumeration.</strong> Agents extract the real inventory: every endpoint, screen, scheduled job, integration and infrastructure resource. Not the architecture diagram from 2019, but the surface that actually exists in the code. This inventory is the denominator of every parity claim you will ever make.</p></li>
+      <li><span class="port" aria-hidden="true"></span><p><strong>Dependency tracing.</strong> Agents trace each unit of the surface through the coupling (static helpers, service locators, inline SQL, shared state) until its true blast radius is known. This is exactly the work that exhausts senior engineers when done by reading, and it is where retrieval-equipped agents are disproportionately strong.</p></li>
+    </ul>
+    </article>
+    <article class="station-detail">
+      <h3 id="station-02">Station 2: Evaluation</h3>
+      <p class="lead">The inventory is scored, not eyeballed. A composite score per unit weighs:</p>
+    <ul class="port-list">
+      <li>framework and API risk (how hostile is this code to the target stack),</li>
+      <li>business criticality,</li>
+      <li>production traffic,</li>
+      <li>existing test coverage (how much of a safety net already exists).</li>
+    </ul>
+    <p>The scores sequence the work into <strong>waves</strong>: bounded batches, ordered so that early waves build the safety net and the reusable patterns that later, riskier waves depend on. Sequencing is a decision your architects review, and they review it holding a scored inventory rather than a hunch.</p>
+    </article>
+    <article class="station-detail">
+      <h3 id="station-03">Station 3: Control</h3>
+      <p>For each wave, agents draft a migration plan in plain Markdown: what moves, what it depends on, what the target shape is, what parity checks prove it, what is explicitly out of scope. Humans review the plan the way they review a pull request: asynchronously, in version control, with line-level comments.</p>
+    <p>This station is the answer to a question every engineering leader asks about AI adoption: <em>does everyone now need to be a prompt engineer?</em> No. <strong>The process develops the plans, and the plans are the prompts</strong>: structured, reviewed, versioned, reusable. The skill your developers exercise shifts from crafting clever instructions to judging whether a plan is correct, complete and safely bounded. They become process managers, leaders of an agent workforce, rather than authors of individual prompts. That is a role senior engineers already know how to do, because it is code review moved one level up.</p>
+    <p>A plan is only approved when a human signs it. This is not ceremony. It is the control in the control loop, and the moment it becomes rubber-stamping, you have automated your way back into the trap.</p>
+    </article>
+    <article class="station-detail">
+      <h3 id="station-04">Station 4: Operation</h3>
+      <p>Agents execute approved plans, and only approved plans. Execution is bounded: one wave, one plan, one reviewable outcome.</p>
+    <p class="lead">Verification is layered, and machines generate it.</p>
+    <ul class="port-ledger">
+      <li><span class="port" aria-hidden="true"></span><p><strong>Response and rendering diffs.</strong> New implementation against old, same inputs, compared automatically: response payloads for services, rendered output for interfaces.</p></li>
+      <li><span class="port" aria-hidden="true"></span><p><strong>Contract tests.</strong> Agents generate parity tests from the enumerated surface itself (endpoint signatures, screen states), so coverage tracks the inventory instead of somebody's memory.</p></li>
+      <li><span class="port" aria-hidden="true"></span><p><strong>Shadow traffic.</strong> Where the risk justifies it, real production traffic is replayed against the new system before it owns anything.</p></li>
+    </ul>
+    <p>Failures do not block the pipeline silently and do not get auto-fixed silently. Each flag routes to a human with the evidence and a proposed fix attached. Humans stop reading two codebases looking for differences; they adjudicate differences that machines already found.</p>
+    </article>
+    </div>
+    <p class="lead">The loop closes here: parity results feed the next wave's planning, scores get recalibrated, and, critically, the cutover question finally has an answer that is a dashboard, not an opinion.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2 id="four-structural-principles">Four structural principles</h2>
+      <p class="mono lens"><span class="vh">Reading route </span>Tech</p>
+    </div>
+    <p class="lead">The control loop works because of four decisions underneath it. Every gain we have seen in agent-driven modernization traces to one of these, not to a bigger model.</p>
+    <ol class="ledger">
+      <li>
+        <span class="mono ledger-num" aria-hidden="true">01</span>
+        <div class="ledger-body">
+          <h3 id="principle-structure-first">Structure first, code last</h3>
+          <p>The instinct with agents is to start generating immediately, because generating is what they visibly do well. Resist it. Discovery, tracing and scoring before any code means every hour of agent execution lands inside a reviewed boundary. Weeks one and two of a structured program produce inventories, scores and plans rather than features. That is politically harder and structurally far cheaper than the alternative, because unreviewed early code is where rework compounds.</p>
+        </div>
+      </li>
+      <li>
+        <span class="mono ledger-num" aria-hidden="true">02</span>
+        <div class="ledger-body">
+          <h3 id="principle-right-context">The right context, safely</h3>
+          <p>Context is the multiplier on everything an agent does, and it cuts both ways. An agent with retrieval over your indexed legacy code, your module library and your conventions produces work that fits your system. An agent without that context does not merely produce less useful work: <strong>it actively manufactures technical debt</strong>, regenerating from scratch what already exists and amplifying every duplication it finds. We have watched teams point a coding assistant at a migration without exposing their shared module repository; the assistant rebuilt the modules, badly, in every place it needed them.</p>
+    <p class="lead">Practically this means:</p>
+    <ul class="port-list">
+      <li>local indexing with zero data egress;</li>
+      <li>retrieval wired into the agents rather than pasted into prompts;</li>
+      <li>and your internal libraries exposed to agents as first-class, documented capabilities so that reuse is the default and duplication is the exception.</li>
+    </ul>
+        </div>
+      </li>
+      <li>
+        <span class="mono ledger-num" aria-hidden="true">03</span>
+        <div class="ledger-body">
+          <h3 id="principle-contract-first">Contract-first parallelism</h3>
+          <p>Cross-team dependencies are where both human throughput and agent throughput go to die. A frontend team blocked on a backend team loses days per handoff; an agent blocked on “ask the other team what the response looks like” is simply stuck, because an AI cannot sit at the table and talk about what's next.</p>
+    <p>The fix is old, and agents make it newly decisive: <strong>write the contract first and mock it.</strong> An interface specification with a mock server in front of it lets both sides, and both sides' agents, ship from day one against the same verifiable target. Handoff latency drops from days to minutes, and the teams align on a single goal instead of negotiating sequence. Reducing cross-team dependencies is not a reorg nicety here; it is what converts coordination into something automatable.</p>
+        </div>
+      </li>
+      <li>
+        <span class="mono ledger-num" aria-hidden="true">04</span>
+        <div class="ledger-body">
+          <h3 id="principle-verification">Verification built in</h3>
+          <p>Parity is the currency of a modernization. If you cannot prove it, you cannot cut over, and everything else was expensive motion. Build the verification harness (diffing, contract tests, shadow replay) as part of the program, not as a QA afterthought, and let agents generate the checks from the enumerated surface. The division of labor that scales is: <strong>agents generate the checks, humans review the flags.</strong></p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2 id="what-changes-for-your-team">What changes for your team</h2>
+      <p class="mono lens"><span class="vh">Reading route </span>Act</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-cell">
+        <h3>Developers become leaders of agents</h3>
+        <p>The day-to-day shifts from writing migration code to reviewing plans, adjudicating parity flags and steering the next wave. Seniority expresses itself as judgment, which is exactly the scarce resource you were trying to scale.</p>
+      </div>
+      <div class="team-cell">
+        <h3>Prompting is a process property, not a personal skill</h3>
+        <p>The pipeline produces the plans; the plans are the structured prompts. One person who is brilliant at prompting is a bus factor, not a strategy.</p>
+      </div>
+      <div class="team-cell">
+        <h3>Review moves up a level</h3>
+        <p>From “read this 400-line diff” to “is this wave's plan bounded, complete and safe”, and separately “is this parity flag a bug or an intentional behavior we must preserve”.</p>
+      </div>
+      <div class="team-cell">
+        <h3>Coordination flattens</h3>
+        <p>Fewer synchronization meetings, more contracts, queues and dashboards. The organization aligns on one goal, provable parity on the new stack, instead of aligning on each other's calendars.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2 id="trade-offs">Trade-offs you are accepting</h2>
+      <p class="mono lens"><span class="vh">Reading route </span>Tech</p>
+    </div>
+    <div class="trades">
+      <div class="trade">
+        <h3>Upfront structure <span class="mono trade-versus">versus</span> early applause</h3>
+        <div class="trade-body"><p>The structured program's first demo is an inventory and a scored plan, not a feature. You will defend that in a steering committee. The unstructured program demos a feature in week three and cannot answer the cutover question in month nine. Decide which conversation you would rather have.</p></div>
+      </div>
+      <div class="trade">
+        <h3>Bounded waves <span class="mono trade-versus">versus</span> opportunistic improvement</h3>
+        <div class="trade-body"><p>Engineers in a legacy codebase see things they itch to redesign. Inside a wave, the answer is no: parity first, improvement after evidence. The discipline feels conservative; it is what keeps the parity claim provable. Park the redesigns in a backlog that activates after cutover.</p></div>
+      </div>
+      <div class="trade">
+        <h3>Local context infrastructure <span class="mono trade-versus">versus</span> convenience</h3>
+        <div class="trade-body"><p>Indexing the estate inside your boundary costs setup time that a cloud-hosted shortcut would not. In any regulated or confidentiality-sensitive environment, the shortcut is not actually available, and the local pipeline is what makes the program approvable at all.</p></div>
+      </div>
+      <div class="trade">
+        <h3>A verification harness <span class="mono trade-versus">versus</span> shipping faster this quarter</h3>
+        <div class="trade-body"><p>Diffing, contract generation and shadow replay are real engineering investments that produce no user-visible features. They are also the only thing that ever lets you switch the legacy system off. Fund them as the product of the program, because they are.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2 id="failure-modes">Failure modes: signals the approach is breaking down</h2>
+      <p class="mono lens"><span class="vh">Reading route </span>Act</p>
+    </div>
+    <p class="lead">Watch for these; each one is observable and each one has a specific repair.</p>
+    <ol class="ledger">
+      <li>
+        <span class="mono ledger-num" aria-hidden="true">01</span>
+        <div class="ledger-body">
+          <h3>The parity dashboard goes quiet</h3>
+          <p>Parity tracking drifts back into spreadsheets and memory.</p>
+          <div class="repair">
+            <p class="mono label">Repair</p>
+            <p>No wave closes without machine-generated parity results attached; the dashboard is the definition of done.</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <span class="mono ledger-num" aria-hidden="true">02</span>
+        <div class="ledger-body">
+          <h3>Agents duplicate what already exists</h3>
+          <p>Generated code rebuilds shared modules instead of importing them. This is a context gap, not an agent quality problem.</p>
+          <div class="repair">
+            <p class="mono label">Repair</p>
+            <p>Re-index, re-expose the library, and regenerate.</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <span class="mono ledger-num" aria-hidden="true">03</span>
+        <div class="ledger-body">
+          <h3>Plan review becomes rubber-stamping</h3>
+          <p>Approval latency drops to minutes and comments disappear. The control is now theater; the loop is open.</p>
+          <div class="repair">
+            <p class="mono label">Repair</p>
+            <p>Sample-audit approved plans, rotate reviewers, make plan quality a named responsibility.</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <span class="mono ledger-num" aria-hidden="true">04</span>
+        <div class="ledger-body">
+          <h3>Waves swell</h3>
+          <p>Each wave carries a little more scope than the last until “bounded execution” is a memory.</p>
+          <div class="repair">
+            <p class="mono label">Repair</p>
+            <p>Hard wave-size limits enforced at planning, not at retrospective.</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <span class="mono ledger-num" aria-hidden="true">05</span>
+        <div class="ledger-body">
+          <h3>A prompt hero emerges</h3>
+          <p>One person hand-crafts increasingly elaborate prompts outside the pipeline, and results depend on their availability.</p>
+          <div class="repair">
+            <p class="mono label">Repair</p>
+            <p>Fold whatever they learned into the plan templates; the process, not the person, is the asset.</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <span class="mono ledger-num" aria-hidden="true">06</span>
+        <div class="ledger-body">
+          <h3>New requirements leak in</h3>
+          <p>“While we're in there” grows past roughly a fifth of the work, parity stops being the goal, and you are now building a new product with a legacy anchor tied to it.</p>
+          <div class="repair">
+            <p class="mono label">Repair</p>
+            <p>Route new asks to the post-cutover backlog, or consciously re-scope the program as product development, with different economics and different promises.</p>
+          </div>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2 id="when-it-does-not-apply">When this strategy does not apply</h2>
+      <p class="mono lens"><span class="vh">Reading route </span>Exec</p>
+    </div>
+    <p class="lead">Use this as a gate, honestly, before you commit:</p>
+    <div class="table-block bleed">
+      <p class="table-caption" aria-hidden="true">
+        Fit criteria for the parity-pipeline strategy.
+        <span class="only-narrow">Scroll the table sideways to compare both columns.</span>
+      </p>
+      <div class="scroll-x" role="region" aria-label="Fit criteria table" tabindex="0">
+        <table class="fit-table">
+          <caption class="vh">Fit criteria for the parity-pipeline strategy.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Fit criterion</th>
+              <th scope="col"><span class="verdict-glyph filled" aria-hidden="true"></span>Fits this strategy</th>
+              <th scope="col"><span class="verdict-glyph open" aria-hidden="true"></span>Does not fit</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <th scope="row">New business requirements</th>
+                <td>≤ ~20% of target scope</td>
+                <td>Substantially new product</td>
+              </tr>
+              <tr>
+                <th scope="row">Feature structure</th>
+                <td>Screens, workflows, endpoints map roughly 1:1</td>
+                <td>Consolidation or re-imagination</td>
+              </tr>
+              <tr>
+                <th scope="row">Legacy as specification</th>
+                <td>Business rules readable; ~80%+ of target derivable from legacy</td>
+                <td>Behavior undocumented and unreadable</td>
+              </tr>
+              <tr>
+                <th scope="row">System count</th>
+                <td>One system in, one system out</td>
+                <td>Several systems merging into one</td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <aside class="well">
+      <p class="mono label accent">Rule of thumb</p>
+      <p class="lead">“the same product on a modern stack” fits; “a new product inspired by the old one” does not.</p>
+    </aside>
+    <p>The second is a legitimate program; it is just a design program, and it needs discovery, product decisions and different verification, not a parity pipeline.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2 id="put-it-to-work">Put it to work</h2>
+      <p class="mono lens"><span class="vh">Reading route </span>Act</p>
+    </div>
+    <h3>In your next planning session, answer five questions:</h3>
+      <ol class="checklist">
+        <li>
+          <span class="check" aria-hidden="true"></span>
+          <span class="question">What percentage of the target is genuinely new requirements?</span>
+          <span class="question-aside">(Above ~20%, stop here and re-frame the program.)</span>
+        </li>
+        <li>
+          <span class="check" aria-hidden="true"></span>
+          <span class="question">Can the legacy surface be enumerated mechanically (endpoints, screens, jobs, resources)? Who can confirm the inventory is complete?</span>
+        </li>
+        <li>
+          <span class="check" aria-hidden="true"></span>
+          <span class="question">What would parity evidence look like for your riskiest workflow: a diff, a contract test, shadow traffic, or all three?</span>
+        </li>
+        <li>
+          <span class="check" aria-hidden="true"></span>
+          <span class="question">Which cross-team dependency would a written, mocked contract remove first?</span>
+        </li>
+        <li>
+          <span class="check" aria-hidden="true"></span>
+          <span class="question">Who reviews plans, and do they have the standing to reject one?</span>
+        </li>
+      </ol>
+      <div class="tracks-head">
+        <h3>Then run a two-track proof, about six weeks:</h3>
+        <p class="mono tracks-marker">≈6 weeks</p>
+      </div>
+      <p class="tracks-note">Both tracks run at the same time.</p>
+      <div class="tracks bleed">
+        <article class="track">
+          <p class="mono label">Track 1</p>
+          <h4>One vertical slice</h4>
+          <p>Pick a single feature domain and run it through the whole loop on real code: ingest, enumerate, trace, score, plan, human review, bounded execution, machine-verified parity. The output is go/no-go evidence, not a slideware pilot.</p>
+        </article>
+        <article class="track">
+          <p class="mono label">Track 2</p>
+          <h4>The estate strategy, in parallel</h4>
+          <p>While the slice runs, tune the agents and retrieval to your codebase, design the wave plan, the review gates, the verification harness and the team process.</p>
+        </article>
+      </div>
+    <p class="lead">By the end of the proof you hold verified parity on real code plus the complete toolkit to scale across the estate. That turns “should we modernize with agents” from a debate into a decision you have already piloted.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2 id="what-we-have-seen">What we have seen</h2>
+      <p class="mono lens"><span class="vh">Reading route </span>Exec</p>
+    </div>
+    <p class="mono chip">Practitioner observation · Not an audited benchmark</p>
+    <p>Ranges from modernization programs run this way, offered as practitioner observation rather than audited benchmark: endpoint migration throughput improving by roughly an order of magnitude once the pipeline is running; architecture-compliance audits that took weeks of manual review completing in hours when agents execute the checks in parallel across the estate; and frontend/backend handoff latency collapsing from days to minutes once a mocked contract replaces coordination.</p>
+    <div class="transitions">
+      <div class="transition">
+        <p class="transition-terms">weeks<span class="transition-arrow" aria-hidden="true">→</span>hours</p>
+        <p class="transition-label">Architecture-compliance audits, once agents run the checks in parallel</p>
+      </div>
+      <div class="transition">
+        <p class="transition-terms">days<span class="transition-arrow" aria-hidden="true">→</span>minutes</p>
+        <p class="transition-label">Frontend and backend handoff latency, once a mocked contract replaces coordination</p>
+      </div>
+      <div class="transition">
+        <p class="transition-terms is-factor">≈10×<span class="transition-qualifier">an order of magnitude</span></p>
+        <p class="transition-label">Endpoint migration throughput, once the pipeline is running</p>
+      </div>
+    </div>
+    <p>Your numbers will depend on how conventional the legacy codebase is, how much of its surface is mechanically discoverable, and how disciplined wave scoping stays.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2 id="method-assumptions-limitations">Method, assumptions and limitations</h2>
+      <p class="mono lens"><span class="vh">Reading route </span>Tech</p>
+    </div>
+    <div class="apparatus">
+        <div class="apparatus-block" id="method">
+          <p class="mono label">Method</p>
+          <p>This guide generalizes IH Tech's operating model for AI-agent-driven modernization: local retrieval over an indexed legacy estate, agentic discovery and dependency tracing, scored wave planning, human plan review, bounded execution, and machine-generated parity verification.</p>
+        </div>
+        <div class="apparatus-block" id="assumptions">
+          <p class="mono label">Assumptions</p>
+          <p>The legacy surface is mechanically discoverable (conventional routing, enumerable screens and resources); the organization can staff plan review with people empowered to reject; production traffic or business criticality data exists to feed scoring where test coverage is weak; the environment permits local indexing infrastructure.</p>
+        </div>
+        <div class="apparatus-block" id="limitations">
+          <p class="mono label">Limitations</p>
+          <p>The throughput observations above are not controlled studies; they come from programs where the fit criteria held. This strategy is explicitly not designed for product re-imagination, multi-system consolidation, or estates where the legacy code cannot serve as a behavioral specification. Model and tooling capabilities continue to shift; the structural principles are the durable part of this guide, and specific tool choices are not.</p>
+        </div>
+        <div class="apparatus-well" id="corrections">
+          <p class="mono label">Corrections</p>
+          <p>If you believe something here is wrong, tell us. Corrections reach us through the contact route on <a href="https://ihtech.ba/" data-event="source" data-target="corrections">ihtech.ba</a>, and this guide's modified date changes when its content does.</p>
+          <p class="apparatus-date">This guide last changed on <time datetime="2026-08-07">7 August 2026</time></p>
+        </div>
+    </div>
+  </section>
+  </main>
+</div>
+
+<footer class="colophon" id="handoff">
+  <div class="page">
+    <p class="colophon-line"><em>IH Tech, an AI-native software consultancy. If you are weighing a modernization program and want the control loop run against your estate, <a href="https://ihtech.ba/#contact" data-event="handoff" data-target="contact">talk to us</a>.</em></p>
+    <a class="action" href="https://ihtech.ba/#contact" data-event="handoff" data-target="contact">Talk to us about a modernization program</a>
+    <ul class="colophon-links">
+      <li><a href="/field-guides/">All field guides</a></li>
+      <li><a href="https://ihtech.ba/#capabilities" data-event="handoff" data-target="capabilities">IH Tech capabilities</a></li>
+    </ul>
+    <p class="colophon-meta">IH Tech · Field Guide 001 · Published <time datetime="2026-08-07">7 August 2026</time> · Updated <time datetime="2026-08-07">7 August 2026</time></p>
+  </div>
+</footer>
+</body>
+</html>

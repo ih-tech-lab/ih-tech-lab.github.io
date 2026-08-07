@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ihtech.ba/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-08-07</lastmod>
+  </url>
+  <url>
+    <loc>https://ihtech.ba/field-guides/</loc>
+    <lastmod>2026-08-07</lastmod>
+  </url>
+  <url>
+    <loc>https://ihtech.ba/field-guides/agentic-legacy-modernization/</loc>
+    <lastmod>2026-08-07</lastmod>
   </url>
 </urlset>

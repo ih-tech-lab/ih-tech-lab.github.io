@@ -1,0 +1,59 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+main {
+  display: grid;
+  flex: 1 1 auto;
+  align-content: center;
+}
+
+.not-found {
+  display: grid;
+  gap: 1rem;
+  padding-block: clamp(3rem, 8vh, 5.5rem);
+}
+
+.not-found-code {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: var(--step--1);
+  font-variant-numeric: tabular-nums;
+  font-weight: 560;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+/* The paired ports of the site's routing-graph signature. */
+.not-found-code::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--accent);
+  border-radius: 2px;
+  background: var(--accent-wash);
+  box-shadow: 16px 0 0 -3px var(--accent-line);
+}
+
+.not-found h1 {
+  max-width: 22ch;
+  font-size: var(--step-3);
+}
+
+.not-found p {
+  max-width: 52ch;
+  color: var(--ink-2);
+}
+
+.not-found-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-block-start: 0.6rem;
+}
