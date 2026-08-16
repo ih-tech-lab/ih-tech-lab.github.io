@@ -15,4 +15,5 @@ Contact: info@ihtech.ba
 
 - [IH Tech — AI-native software consultancy in Sarajevo](https://ihtech.ba/): A team of AI experts that join yours. Technical authority, embedded delivery, AI enablement and agent architectures for teams in the EU, North America and the Middle East.
 - [Field guides: decision frameworks for engineering leaders](https://ihtech.ba/field-guides/): Practical decision frameworks for engineering leaders: what the decision is, the answer we would give, when it does not apply, and what to do next.
+- [Redesigning the engineering ladder for AI-native teams](https://ihtech.ba/field-guides/ai-native-leveling-ladder/): A custody-based leveling and hiring framework for the AI era: levels defined by what you can be accountable for, a standardized assessment cockpit, and a protected formation budget that keeps the junior-to-senior pipeline alive.
 - [Modernizing legacy systems with AI agents](https://ihtech.ba/field-guides/agentic-legacy-modernization/): A control-loop strategy for AI-agent modernization: structure first, plans as reviewed prompts, machine-generated parity evidence, and a clear fit test.

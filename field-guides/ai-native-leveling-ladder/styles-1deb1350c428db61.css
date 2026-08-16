@@ -1,0 +1,2562 @@
+/*
+ * Field Guide 002 — the house system applied to a leveling instrument.
+ *
+ * Every token below is Guide 001's, unchanged, plus `--surface-2` from the
+ * site's `shell.css`: two graphite systems that differ by accident would be
+ * worse than one repeated block. The stylesheet stays route-local, imports
+ * nothing, and loads no font.
+ *
+ * Three rules govern everything below.
+ *   1. Layers come from space, then a background step, then a hairline. Depth is
+ *      one lit edge on the plate, never a drop shadow under content.
+ *   2. The accent has exactly one job: the level the organization can actually
+ *      rely on. It appears on the custody line and its caps, the custody row's
+ *      wash, the CUSTODY LINE label, the verdict value, the focus ring, link
+ *      underlines on hover and the single filled button. Nowhere else, and
+ *      deliberately not on failure modes, the fit table or citation markers.
+ *   3. The instrument's resolution rule is CSS. `:has()` resolves the custody
+ *      line, so the reader operates a working instrument with script disabled;
+ *      the module only adds the diagnosis sentence and one announcement.
+ */
+
+:root {
+  color-scheme: dark;
+
+  /* Surfaces: page ground, the plate, cells and wells, a marked cell. */
+  --paper: oklch(0.145 0.018 245);
+  --sheet: oklch(0.165 0.019 245);
+  --surface: oklch(0.19 0.02 245);
+  --surface-2: oklch(0.225 0.022 245);
+
+  --ink: oklch(0.955 0.009 240);
+  --ink-2: oklch(0.8 0.018 240);
+  --ink-3: oklch(0.68 0.024 240);
+
+  --rule: oklch(0.255 0.02 242);
+  --rule-strong: oklch(0.32 0.024 242);
+
+  --accent: oklch(0.76 0.13 220);
+  --accent-deep: oklch(0.7 0.15 220);
+  --accent-wash: oklch(0.76 0.13 220 / 0.12);
+  --accent-rule: oklch(0.76 0.13 220 / 0.45);
+  --on-accent: oklch(0.14 0.02 245);
+
+  --font-sans:
+    ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* `--t-kicker` is the house `--step--1`: the only size monospace appears at. */
+  --t-kicker: clamp(0.8rem, 0.77rem + 0.14vw, 0.88rem);
+  --t-fine: clamp(0.9rem, 0.87rem + 0.14vw, 0.98rem);
+  --t-body: clamp(0.98rem, 0.94rem + 0.18vw, 1.08rem);
+  --t-lead: clamp(1.1rem, 1.02rem + 0.36vw, 1.28rem);
+  --t-h3: clamp(1.3rem, 1.18rem + 0.55vw, 1.58rem);
+  --t-h2: clamp(1.625rem, 1.4rem + 1.1vw, 2rem);
+  --t-h1: clamp(2.125rem, 1.5rem + 3.2vw, 3.25rem);
+
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 20px;
+  --s6: 24px;
+  --s7: 32px;
+  --s8: 40px;
+  --s9: 48px;
+  --s10: 64px;
+  --s11: 96px;
+
+  --rhythm: clamp(3.5rem, 5vw, 6rem);
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+  --text-max: 704px;
+  --rail: 232px;
+  --rail-gap: 64px;
+
+  /*
+   * How far a plate may break past the text column, on each side.
+   *
+   * It is measured from the viewport rather than fixed, because a bleed is only
+   * ever as wide as the space beside the text column: a fixed 136px would push
+   * the container past a 900px viewport and clip the plate. The 32px term is
+   * headroom for a scrollbar. `--break-cap` drops to 96px once the contents rail
+   * is present, which is what keeps the plate 24px clear of it.
+   */
+  --break-cap: 136px;
+  --break: clamp(0px, (100vw - 2 * var(--gutter) - var(--text-max) - 32px) / 2, var(--break-cap));
+
+  --r1: 4px;
+  --r2: 10px;
+  --r3: 18px;
+
+  --fast: 120ms;
+  --base: 240ms;
+  --move: 320ms;
+  --draw: 900ms;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+/* --- base ---------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  overflow-x: clip;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: var(--t-body);
+  line-height: 1.68;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+dl,
+figure,
+table,
+blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+h1 {
+  max-width: 22ch;
+  font-size: var(--t-h1);
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.042em;
+  text-wrap: balance;
+}
+
+h2 {
+  font-size: var(--t-h2);
+  font-weight: 660;
+  line-height: 1.15;
+  letter-spacing: -0.032em;
+  text-wrap: balance;
+}
+
+h3 {
+  font-size: var(--t-h3);
+  font-weight: 660;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+h4 {
+  font-size: var(--t-body);
+  font-weight: 660;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+p,
+li,
+figcaption {
+  text-wrap: pretty;
+}
+
+strong {
+  font-weight: 660;
+}
+
+.lead {
+  font-size: var(--t-lead);
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.mono,
+table,
+time,
+[class*='-num'] {
+  font-variant-numeric: tabular-nums;
+}
+
+/* The house kicker, and the only shape monospace takes in this document: a
+   short uppercase identifier at `--step--1`. Prose, headings, table headers,
+   captions and rail entries are all sans. */
+.mono {
+  font-family: var(--font-mono);
+  font-size: var(--t-kicker);
+  font-weight: 560;
+  line-height: 1.35;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.label {
+  color: var(--ink-3);
+}
+
+.accent {
+  color: var(--accent);
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--accent-rule);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+  padding-block: 4px;
+  transition: text-decoration-color var(--fast) var(--ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a:hover {
+    text-decoration-color: var(--accent);
+  }
+}
+
+:where(a, button, summary, input, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--r1);
+}
+
+.vh {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.print-only {
+  display: none;
+}
+
+.skip {
+  position: fixed;
+  z-index: 100;
+  inset-block-start: var(--s3);
+  inset-inline-start: var(--s3);
+  padding: 0.7rem 1rem;
+  border-radius: var(--r2);
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 660;
+  text-decoration: none;
+  transform: translateY(calc(-100% - 1.5rem));
+  transition: transform var(--base) var(--ease);
+}
+
+.skip:focus {
+  transform: translateY(0);
+}
+
+/* The document's one repeated glyph: a square that is filled or open. The shape
+   is the signal, so nothing here depends on colour. */
+.glyph {
+  display: inline-block;
+  flex: none;
+  width: 8px;
+  height: 8px;
+  margin-inline-end: var(--s2);
+  border: 1.5px solid var(--ink-2);
+  border-radius: 1.5px;
+}
+
+.glyph-filled {
+  background: var(--ink-2);
+}
+
+/* --- containers ---------------------------------------------------------- */
+
+.page,
+.shell {
+  --cluster: var(--text-max);
+
+  max-width: calc(var(--cluster) + 2 * var(--gutter) + 2 * var(--break));
+  margin-inline: auto;
+  padding-inline: calc(var(--gutter) + var(--break));
+  display: grid;
+  grid-template-columns: minmax(0, var(--text-max));
+}
+
+.page > *,
+.shell > * {
+  grid-column: 1;
+  min-width: 0;
+}
+
+.bleed {
+  margin-inline: calc(-1 * var(--break));
+}
+
+/* The identification band is sheet furniture rather than prose: it spans the
+   whole container, so the lockup sits on the page's own edge while the title
+   below keeps the document's single content edge. */
+.page > .masthead-band {
+  grid-column: 1 / -1;
+  margin-inline: calc(-1 * var(--break));
+}
+
+/* --- masthead ------------------------------------------------------------ */
+
+.masthead {
+  border-block-end: 1px solid var(--rule);
+}
+
+.masthead-band {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s3) var(--s5);
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--s6);
+}
+
+.lockup {
+  display: inline-flex;
+  gap: var(--s3);
+  align-items: center;
+  min-height: 44px;
+  color: var(--ink);
+  font-size: var(--t-fine);
+  text-decoration: none;
+}
+
+.lockup-mark {
+  flex: none;
+  color: var(--ink-2);
+}
+
+.lockup-name {
+  font-weight: 440;
+}
+
+.lockup-name strong {
+  font-weight: 660;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .lockup:hover .lockup-mark {
+    color: var(--accent);
+  }
+}
+
+.reference {
+  color: var(--ink-3);
+}
+
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+  align-items: center;
+  font-size: var(--t-fine);
+  color: var(--ink-3);
+}
+
+/* Separators trail their own item rather than leading the next one: a leading
+   separator lands at the start of a line whenever the trail wraps. */
+.breadcrumb li:not(:last-child)::after {
+  content: '/';
+  margin-inline-start: var(--s2);
+  color: var(--rule-strong);
+}
+
+.breadcrumb a {
+  display: inline-block;
+  min-height: 44px;
+  line-height: 44px;
+  padding-block: 0;
+}
+
+.breadcrumb [aria-current='page'] {
+  color: var(--ink-2);
+}
+
+.masthead-title {
+  padding-block: var(--s6) var(--s10);
+}
+
+.eyebrow {
+  margin-block-end: var(--s9);
+  color: var(--accent);
+}
+
+.deck {
+  max-width: 58ch;
+  margin-block-start: var(--s4);
+  font-size: var(--t-lead);
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2) var(--s3);
+  margin-block-start: var(--s6);
+  color: var(--ink-3);
+}
+
+.meta li:not(:last-child)::after {
+  content: '·';
+  margin-inline-start: var(--s3);
+  color: var(--rule-strong);
+}
+
+.draft {
+  color: var(--accent);
+}
+
+/* --- the three moves ----------------------------------------------------- */
+
+.moves {
+  padding-block: var(--s8);
+  border-block-end: 1px solid var(--rule);
+}
+
+/* The guard line is not chrome: it is what stops a three-card grid implying the
+   moves are separable, which the guide's own fit test forbids. */
+.moves-guard {
+  font-size: var(--t-fine);
+  color: var(--ink-2);
+}
+
+.moves-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--s4);
+  margin-block-start: var(--s4);
+}
+
+.move {
+  display: flex;
+  flex-direction: column;
+  padding: var(--s5);
+  border: 1px solid var(--rule);
+  border-radius: var(--r2);
+  background: var(--surface);
+}
+
+.move-id {
+  color: var(--ink-3);
+}
+
+.move-title {
+  margin-block: var(--s2) var(--s2);
+  font-size: var(--t-body);
+  font-weight: 660;
+  line-height: 1.35;
+}
+
+.move-time {
+  color: var(--ink-3);
+}
+
+.move-links {
+  margin-block-start: auto;
+  padding-block-start: var(--s3);
+}
+
+.move-links a {
+  display: block;
+  min-height: 44px;
+  padding-block: var(--s2);
+  font-size: var(--t-fine);
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+/* --- contents: the rail and the compact bar ------------------------------ */
+
+.rail {
+  display: none;
+}
+
+.rail-heading {
+  margin-block-end: var(--s3);
+}
+
+.rail-list a {
+  display: block;
+  min-height: 44px;
+  padding-block: var(--s2);
+  padding-inline: var(--s3) var(--s4);
+  border-inline-start: 2px solid transparent;
+  font-size: var(--t-fine);
+  line-height: 1.4;
+  color: var(--ink-3);
+  text-decoration: none;
+  transition:
+    color var(--fast) var(--ease),
+    border-color var(--fast) var(--ease);
+}
+
+.rail-list a[aria-current='true'] {
+  border-inline-start-color: var(--accent);
+  color: var(--ink);
+}
+
+.rail-children a {
+  padding-inline-start: var(--s6);
+  font-size: var(--t-kicker);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .rail-list a:hover {
+    color: var(--ink);
+  }
+}
+
+.contents-bar {
+  border-block-end: 1px solid var(--rule);
+  background: var(--paper);
+}
+
+.contents-disclosure summary {
+  display: flex;
+  align-items: center;
+  min-height: 56px;
+  color: var(--ink-3);
+  cursor: pointer;
+}
+
+.contents-disclosure summary::marker,
+.contents-disclosure summary::-webkit-details-marker {
+  color: var(--rule-strong);
+}
+
+.contents-disclosure nav {
+  padding-block-end: var(--s5);
+}
+
+.contents-moves {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--s6);
+  margin-block-end: var(--s3);
+}
+
+.contents-moves a {
+  display: inline-block;
+  min-height: 44px;
+  line-height: 44px;
+  padding-block: 0;
+  color: var(--ink-2);
+}
+
+/* --- sections and prose furniture ---------------------------------------- */
+
+main {
+  padding-block: var(--s10) var(--s11);
+}
+
+.section + .section {
+  margin-block-start: var(--rhythm);
+}
+
+h2[id],
+h3[id] {
+  scroll-margin-block-start: var(--s10);
+}
+
+.section > p,
+.section > .lead {
+  margin-block-start: var(--s5);
+}
+
+.section > h2 + p,
+.section > h2 + .lead {
+  margin-block-start: var(--s4);
+}
+
+.section > h3 {
+  margin-block-start: var(--s9);
+}
+
+.section > h4 + p,
+.section p + p {
+  margin-block-start: var(--s5);
+}
+
+/* Both pull-outs are graphite. The accent means the level a reader can rely on;
+   spending it on an emphasised sentence would cost the custody line its one job. */
+.pull {
+  margin-block-start: var(--s6);
+  padding: var(--s5);
+  border-inline-start: 2px solid var(--rule-strong);
+  border-radius: var(--r2);
+  background: var(--surface);
+}
+
+.pull p {
+  color: var(--ink);
+}
+
+.definition {
+  margin-block-start: var(--s5);
+  padding: var(--s6);
+  border-radius: var(--r3);
+  background: var(--surface);
+}
+
+.definition p + p {
+  margin-block-start: var(--s5);
+  color: var(--ink-2);
+}
+
+.ledger {
+  margin-block-start: var(--s6);
+}
+
+.ledger > li {
+  display: grid;
+  grid-template-columns: var(--s8) minmax(0, 1fr);
+  padding-block: var(--s6);
+  border-block-start: 1px solid var(--rule);
+}
+
+.ledger > li:last-child {
+  border-block-end: 1px solid var(--rule);
+}
+
+.ledger-num {
+  color: var(--ink-3);
+}
+
+.ledger-body > * + * {
+  margin-block-start: var(--s4);
+}
+
+.ledger-body p {
+  color: var(--ink-2);
+}
+
+.exclusion {
+  margin-block-start: var(--s7);
+  padding: var(--s6);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--r2);
+}
+
+.exclusion .label {
+  margin-block-end: var(--s4);
+}
+
+.exclusion p + ul,
+.exclusion ul + p {
+  margin-block-start: var(--s4);
+}
+
+.mark-list li {
+  position: relative;
+  padding-inline-start: var(--s6);
+  color: var(--ink-2);
+}
+
+.mark-list li + li {
+  margin-block-start: var(--s3);
+}
+
+.mark-list li::before {
+  content: '';
+  position: absolute;
+  inset-block-start: 0.62em;
+  inset-inline-start: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 1.5px;
+  background: var(--ink-2);
+}
+
+.pressures {
+  margin-block-start: var(--s7);
+}
+
+.pressure + .pressure {
+  margin-block-start: var(--s9);
+  padding-block-start: var(--s9);
+  border-block-start: 1px solid var(--rule);
+}
+
+.pressure .label {
+  margin-block-end: var(--s3);
+}
+
+.axes {
+  margin-block-start: var(--s6);
+}
+
+.axes > li {
+  padding-block: var(--s6);
+  border-block-start: 1px solid var(--rule);
+}
+
+.axes > li:last-child {
+  border-block-end: 1px solid var(--rule);
+}
+
+.axes h4,
+.tests h4 {
+  margin-block: var(--s2) var(--s3);
+}
+
+.axes p {
+  color: var(--ink-2);
+}
+
+.axis-test {
+  margin-block-start: var(--s3);
+}
+
+.axis-test a {
+  color: var(--ink-3);
+  text-decoration-color: transparent;
+}
+
+.tests {
+  margin-block-start: var(--s6);
+}
+
+.test + .test {
+  margin-block-start: var(--s9);
+  padding-block-start: var(--s9);
+  border-block-start: 1px solid var(--rule);
+}
+
+.test p {
+  color: var(--ink-2);
+}
+
+.well {
+  margin-block-start: var(--s7);
+  padding: var(--s5);
+  border-radius: var(--r2);
+  background: var(--surface);
+}
+
+.well .label {
+  margin-block-end: var(--s3);
+}
+
+.repair {
+  margin-block-start: var(--s4);
+  padding: var(--s4);
+  border-radius: var(--r1);
+  background: var(--surface);
+}
+
+.repair .label {
+  margin-block-end: var(--s2);
+}
+
+.repair p {
+  font-size: var(--t-fine);
+}
+
+.chip {
+  display: inline-block;
+  margin-block-start: var(--s4);
+  padding: var(--s2) var(--s3);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--r1);
+  color: var(--ink-3);
+}
+
+/* --- Figure 1: the custody lattice --------------------------------------- */
+
+.figure {
+  /* The one shadow on this page, and it is a lit edge rather than a float: on a
+     dark ground a raised surface reads through its highlight. */
+  box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.045);
+  margin-block-start: var(--s7);
+  padding: var(--s5);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--r3);
+  background: var(--sheet);
+}
+
+.lattice {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.lattice th,
+.lattice td {
+  text-align: start;
+  vertical-align: top;
+}
+
+.lattice thead th {
+  padding: 0 var(--s4) var(--s4);
+}
+
+/* The rail column is fixed and the three axis columns share what is left, which
+   is what makes the twelve cells a grid rather than four rows of boxes. */
+.tier-head-top {
+  width: 240px;
+  color: var(--ink-3);
+  font-size: var(--t-fine);
+  font-weight: 560;
+}
+
+.axis-head span,
+.axis-head a {
+  display: block;
+}
+
+.axis-code {
+  color: var(--ink-3);
+}
+
+/* Two lines of headroom, so the three test sub-labels share one baseline even
+   though only "Judgment under agency" wraps. */
+.axis-name {
+  min-height: 2.5em;
+  margin-block: var(--s1) var(--s2);
+  font-size: var(--t-body);
+  font-weight: 660;
+  line-height: 1.25;
+}
+
+.axis-head-test {
+  color: var(--ink-3);
+  text-decoration-color: transparent;
+}
+
+.lattice tbody th,
+.lattice tbody td {
+  height: 92px;
+}
+
+.tier-head {
+  padding: var(--s4) var(--s4) var(--s4) 0;
+  background: var(--sheet);
+}
+
+.tier-head span {
+  display: block;
+}
+
+.tier-code {
+  color: var(--ink-3);
+}
+
+.tier-name {
+  margin-block: var(--s1) 2px;
+  font-weight: 660;
+}
+
+.tier-title {
+  color: var(--ink-3);
+}
+
+.lattice td.axis {
+  position: relative;
+  padding: var(--s4);
+  border-inline-start: 1px solid var(--rule);
+  border-block-start: 1px solid var(--rule);
+  background: var(--surface);
+}
+
+.cell-label {
+  display: none;
+}
+
+/* 2px rather than `--r1`: at 10px a 4px radius reads as a dot, and the legend
+   calls this shape a square. The 14px squares in print and in the planning
+   checklist keep `--r1`, where the same radius is optically right. */
+.lattice .mark {
+  position: absolute;
+  inset-block-start: calc(var(--s4) + 3px);
+  inset-inline-start: var(--s4);
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid var(--ink-2);
+  border-radius: 2px;
+  background: var(--ink-2);
+}
+
+/* An axis that reaches above the level keeps its square and loses its fill: the
+   difference is a shape before it is anything else. */
+.lattice .mark-open {
+  background: none;
+}
+
+.criterion,
+.above {
+  padding-inline-start: calc(10px + var(--s3));
+}
+
+.criterion {
+  font-size: var(--t-fine);
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+.above {
+  margin-block-start: var(--s2);
+  font-size: var(--t-kicker);
+  color: var(--ink-3);
+}
+
+.row-mark {
+  margin-block-start: var(--s2);
+  color: var(--accent);
+}
+
+/*
+ * The custody line.
+ *
+ * `inset-inline: -1px` bridges the 1px cell border so the three segments read as
+ * one line rather than three dashes, and the caps sit on the outer edges of the
+ * first and last axis cell.
+ *
+ * It is drawn on the row's leading edge rather than through its middle. A line
+ * at 50% of a cell that holds three lines of criterion text crosses the words,
+ * which is a defect the design's own review gate rejects; the leading edge is
+ * also the honest place for it, because everything above that edge is above the
+ * level. The narrow form in §10.3 draws the same edge, so one mechanism reads
+ * identically at every width.
+ */
+.line-row td.axis {
+  background-color: var(--surface);
+  background-image: linear-gradient(var(--accent-wash), var(--accent-wash));
+}
+
+.line-row td.axis::after {
+  content: '';
+  position: absolute;
+  inset-inline: -1px;
+  inset-block-start: -1px;
+  height: 2px;
+  background: var(--accent);
+  transform-origin: left center;
+}
+
+.line-row td.axis:first-of-type::before,
+.line-row td.axis:last-of-type::before {
+  content: '';
+  position: absolute;
+  inset-block-start: -4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+.line-row td.axis:first-of-type::before {
+  inset-inline-start: -5px;
+}
+
+.line-row td.axis:last-of-type::before {
+  inset-inline-end: -5px;
+}
+
+/* The line draws itself once, when the reader reaches the plate. The module
+   sets the attribute; without it the line is simply present. */
+.figure[data-draw='pending'] .line-row td.axis::after {
+  transform: scaleX(0);
+}
+
+.figure[data-draw='done'] .line-row td.axis::after {
+  transform: scaleX(1);
+  transition: transform var(--draw) var(--ease);
+}
+
+.figure[data-draw='done'] .line-row td.axis:nth-of-type(3)::after {
+  transition-delay: 120ms;
+}
+
+.figure[data-draw='done'] .line-row td.axis:nth-of-type(4)::after {
+  transition-delay: 240ms;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s3) var(--s6);
+  margin-block-start: var(--s5);
+}
+
+.legend li {
+  display: flex;
+  gap: var(--s3);
+  align-items: center;
+}
+
+.legend-sample {
+  flex: none;
+  display: block;
+}
+
+.legend-filled,
+.legend-open {
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid var(--ink-2);
+  border-radius: 2px;
+}
+
+.legend-filled {
+  background: var(--ink-2);
+}
+
+.legend-line {
+  position: relative;
+  width: 28px;
+  height: 8px;
+  background:
+    linear-gradient(var(--accent), var(--accent)) center / 100% 2px no-repeat,
+    linear-gradient(var(--accent), var(--accent)) left center / 8px 8px no-repeat,
+    linear-gradient(var(--accent), var(--accent)) right center / 8px 8px no-repeat;
+}
+
+.legend-label {
+  color: var(--ink-3);
+  letter-spacing: 0.06em;
+  text-transform: none;
+}
+
+.figure figcaption {
+  margin-block-start: var(--s5);
+  font-size: var(--t-fine);
+  line-height: 1.55;
+  color: var(--ink-3);
+}
+
+/* --- the custody check --------------------------------------------------- */
+
+.check {
+  margin-block-start: var(--s9);
+  padding: var(--s6);
+  border-radius: var(--r3);
+  background: var(--surface);
+}
+
+.check .lead {
+  margin-block-start: var(--s2);
+  color: var(--ink-2);
+}
+
+.check-form {
+  margin-block-start: var(--s6);
+}
+
+.check-grid {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.check-grid th,
+.check-grid td {
+  text-align: start;
+  vertical-align: top;
+}
+
+.check-corner {
+  width: 220px;
+}
+
+.check-head {
+  padding: 0 var(--s3) var(--s3);
+}
+
+.check-head span {
+  display: block;
+}
+
+.check-axis-name {
+  margin-block: var(--s1) 2px;
+  font-size: var(--t-fine);
+  font-weight: 660;
+  line-height: 1.25;
+}
+
+.check-tier {
+  padding: var(--s2) var(--s4) var(--s2) 0;
+  vertical-align: middle;
+}
+
+.check-tier span {
+  display: block;
+}
+
+.check-tier .tier-name {
+  font-size: var(--t-fine);
+}
+
+/*
+ * The cell surface is painted on the `<td>` rather than on the label inside it.
+ * A row is as tall as its header, which carries four lines, so a label that only
+ * grew to its own 56px would leave the custody row's wash standing proud of the
+ * marks it belongs to.
+ */
+.check-grid td.axis {
+  position: relative;
+  height: 1px;
+  padding: 2px;
+  background-color: var(--sheet);
+  background-clip: padding-box;
+  border-radius: var(--r2);
+  transition: background-color var(--fast) var(--ease);
+}
+
+.check-grid td.axis:has(input:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+  background-color: var(--surface-2);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .check-grid td.axis:hover {
+    background-color: var(--surface-2);
+  }
+}
+
+/*
+ * One radio, one 56px target.
+ *
+ * The input covers its cell and is transparent rather than `appearance: none`,
+ * so it keeps native radio-group behaviour: three tab stops for twelve controls,
+ * arrow keys moving within an axis, and a form reset that restores the worked
+ * example without a line of script. The focus ring is drawn on the label because
+ * a transparent box paints no outline of its own.
+ */
+.cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 56px;
+  border-radius: var(--r2);
+  cursor: pointer;
+  transition: transform var(--fast) var(--ease);
+}
+
+.cell input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.cell:active {
+  transform: translateY(1px);
+}
+
+/*
+ * Three states, three shapes.
+ *
+ * An unset axis is a faint empty square, an axis set at or below the custody
+ * line is filled, and an axis set above it is a full-strength open square, which
+ * is the same pair of shapes the plate and its legend use. Selection is carried
+ * by strength and fill together, because at 14px a border-colour step alone is
+ * not a difference a reader can see. The mark is 14px rather than the plate's
+ * 10px because it carries one more state and sits alone in a 56px target.
+ */
+.check .mark {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--ink-2);
+  border-radius: 2px;
+  opacity: 0.34;
+  transition: opacity var(--fast) var(--ease);
+}
+
+.check .mark::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 1.5px;
+  background: var(--ink-2);
+  opacity: 0;
+  transition: opacity var(--fast) var(--ease);
+}
+
+.cell:has(input:checked) .mark {
+  opacity: 1;
+}
+
+.cell:has(input:checked) .mark::after {
+  opacity: 1;
+}
+
+.check .row-mark {
+  display: block;
+  visibility: hidden;
+}
+
+/* The instrument draws the same leading edge as the plate, one row-height above
+   the marks it resolves, so the line never crosses a mark or a label. */
+.check td.axis::after {
+  content: '';
+  position: absolute;
+  inset-inline: -1px;
+  inset-block-start: -1px;
+  height: 2px;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity var(--base) var(--ease);
+  transform-origin: left center;
+}
+
+.check td.axis:first-of-type::before,
+.check td.axis:last-of-type::before {
+  content: '';
+  position: absolute;
+  inset-block-start: -4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity var(--base) var(--ease);
+}
+
+.check td.axis:first-of-type::before {
+  inset-inline-start: -5px;
+}
+
+.check td.axis:last-of-type::before {
+  inset-inline-end: -5px;
+}
+
+.check-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s3) var(--s5);
+  align-items: center;
+  justify-content: space-between;
+  margin-block-start: var(--s5);
+}
+
+.check-note {
+  font-size: var(--t-fine);
+  color: var(--ink-3);
+}
+
+.check-reset {
+  min-height: 48px;
+  padding-inline: var(--s5);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--r2);
+  background: none;
+  color: var(--ink-2);
+  font: inherit;
+  font-size: var(--t-fine);
+  cursor: pointer;
+  transition:
+    background-color var(--fast) var(--ease),
+    color var(--fast) var(--ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .check-reset:hover {
+    background: var(--surface-2);
+    color: var(--ink);
+  }
+}
+
+.verdict {
+  margin-block-start: var(--s6);
+  padding: var(--s5);
+  border-radius: var(--r2);
+  background: var(--surface-2);
+}
+
+.verdict-value {
+  margin-block-start: var(--s2);
+  font-size: var(--t-h3);
+  font-weight: 660;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+}
+
+.verdict-value span {
+  display: none;
+}
+
+.verdict-rule {
+  margin-block-start: var(--s3);
+  color: var(--ink-2);
+}
+
+.verdict-diagnosis {
+  margin-block-start: var(--s3);
+}
+
+.verdict-diagnosis:empty,
+.verdict-quote:empty {
+  display: none;
+}
+
+.verdict-quote {
+  margin-block-start: var(--s4);
+  padding-block-start: var(--s4);
+  border-block-start: 1px solid var(--rule);
+}
+
+.quote-text {
+  font-size: var(--t-fine);
+  color: var(--ink-2);
+}
+
+.quote-link {
+  display: inline-block;
+  margin-block-start: var(--s2);
+  color: var(--ink-3);
+}
+
+.is-fresh {
+  animation: verdict-in var(--move) var(--ease-out) both;
+}
+
+@keyframes verdict-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/*
+ * Fallback where `:has()` is unavailable.
+ *
+ * The worked example is painted unconditionally, so such a browser shows a
+ * static, correctly captioned example rather than a table whose marks move while
+ * no line follows them. Everything below is undone in the `@supports` block.
+ */
+.check .is-example-line td.axis {
+  background-image: linear-gradient(var(--accent-wash), var(--accent-wash));
+}
+
+.check .is-example-line td.axis::after,
+.check .is-example-line td.axis::before {
+  opacity: 1;
+}
+
+.check .is-example-line .row-mark {
+  visibility: visible;
+}
+
+.verdict-value .is-example-level {
+  display: inline;
+}
+
+/*
+ * The state machine.
+ *
+ * The rule is one sentence: the custody line sits at the lowest tier any axis is
+ * set to. Four floor predicates say that in CSS, and every visual consequence
+ * hangs off them, so the instrument resolves with script disabled, blocked or
+ * broken. `:has()` has been in all three engines since December 2023; the
+ * fallback above covers what came before.
+ */
+@supports selector(:has(*)) {
+  .check .is-example-line td.axis {
+    background-image: none;
+  }
+
+  .check .is-example-line td.axis::after,
+  .check .is-example-line td.axis::before {
+    opacity: 0;
+  }
+
+  .check .is-example-line .row-mark {
+    visibility: hidden;
+  }
+
+  .verdict-value .is-example-level {
+    display: none;
+  }
+
+  /* Floor at tier 1 */
+  #custody-check:has(input[data-tier='1']:checked) tr[data-tier='1'] td.axis {
+    background-image: linear-gradient(var(--accent-wash), var(--accent-wash));
+  }
+
+  #custody-check:has(input[data-tier='1']:checked) tr[data-tier='1'] td.axis::after,
+  #custody-check:has(input[data-tier='1']:checked) tr[data-tier='1'] td.axis::before {
+    opacity: 1;
+  }
+
+  #custody-check:has(input[data-tier='1']:checked) tr[data-tier='1'] .row-mark {
+    visibility: visible;
+  }
+
+  #custody-check:has(input[data-tier='1']:checked) .verdict-value [data-level='1'] {
+    display: inline;
+  }
+
+  #custody-check:has(input[data-tier='1']:checked)
+    td.axis:has(
+      input[data-tier='2']:checked,
+      input[data-tier='3']:checked,
+      input[data-tier='4']:checked
+    )
+    .mark::after {
+    opacity: 0;
+  }
+
+  /* Floor at tier 2 */
+  #custody-check:has(input[data-tier='2']:checked):not(:has(input[data-tier='1']:checked))
+    tr[data-tier='2']
+    td.axis {
+    background-image: linear-gradient(var(--accent-wash), var(--accent-wash));
+  }
+
+  #custody-check:has(input[data-tier='2']:checked):not(:has(input[data-tier='1']:checked))
+    tr[data-tier='2']
+    td.axis::after,
+  #custody-check:has(input[data-tier='2']:checked):not(:has(input[data-tier='1']:checked))
+    tr[data-tier='2']
+    td.axis::before {
+    opacity: 1;
+  }
+
+  #custody-check:has(input[data-tier='2']:checked):not(:has(input[data-tier='1']:checked))
+    tr[data-tier='2']
+    .row-mark {
+    visibility: visible;
+  }
+
+  #custody-check:has(input[data-tier='2']:checked):not(:has(input[data-tier='1']:checked))
+    .verdict-value
+    [data-level='2'] {
+    display: inline;
+  }
+
+  #custody-check:has(input[data-tier='2']:checked):not(:has(input[data-tier='1']:checked))
+    td.axis:has(input[data-tier='3']:checked, input[data-tier='4']:checked)
+    .mark::after {
+    opacity: 0;
+  }
+
+  /* Floor at tier 3 */
+  #custody-check:has(input[data-tier='3']:checked):not(
+      :has(input[data-tier='1']:checked, input[data-tier='2']:checked)
+    )
+    tr[data-tier='3']
+    td.axis {
+    background-image: linear-gradient(var(--accent-wash), var(--accent-wash));
+  }
+
+  #custody-check:has(input[data-tier='3']:checked):not(
+      :has(input[data-tier='1']:checked, input[data-tier='2']:checked)
+    )
+    tr[data-tier='3']
+    td.axis::after,
+  #custody-check:has(input[data-tier='3']:checked):not(
+      :has(input[data-tier='1']:checked, input[data-tier='2']:checked)
+    )
+    tr[data-tier='3']
+    td.axis::before {
+    opacity: 1;
+  }
+
+  #custody-check:has(input[data-tier='3']:checked):not(
+      :has(input[data-tier='1']:checked, input[data-tier='2']:checked)
+    )
+    tr[data-tier='3']
+    .row-mark {
+    visibility: visible;
+  }
+
+  #custody-check:has(input[data-tier='3']:checked):not(
+      :has(input[data-tier='1']:checked, input[data-tier='2']:checked)
+    )
+    .verdict-value
+    [data-level='3'] {
+    display: inline;
+  }
+
+  #custody-check:has(input[data-tier='3']:checked):not(
+      :has(input[data-tier='1']:checked, input[data-tier='2']:checked)
+    )
+    td.axis:has(input[data-tier='4']:checked)
+    .mark::after {
+    opacity: 0;
+  }
+
+  /* Floor at tier 4: every axis is at process custody, so nothing is above it. */
+  #custody-check:has(input[data-tier='4']:checked):not(
+      :has(input[data-tier='1']:checked, input[data-tier='2']:checked, input[data-tier='3']:checked)
+    )
+    tr[data-tier='4']
+    td.axis {
+    background-image: linear-gradient(var(--accent-wash), var(--accent-wash));
+  }
+
+  #custody-check:has(input[data-tier='4']:checked):not(
+      :has(input[data-tier='1']:checked, input[data-tier='2']:checked, input[data-tier='3']:checked)
+    )
+    tr[data-tier='4']
+    td.axis::after,
+  #custody-check:has(input[data-tier='4']:checked):not(
+      :has(input[data-tier='1']:checked, input[data-tier='2']:checked, input[data-tier='3']:checked)
+    )
+    tr[data-tier='4']
+    td.axis::before {
+    opacity: 1;
+  }
+
+  #custody-check:has(input[data-tier='4']:checked):not(
+      :has(input[data-tier='1']:checked, input[data-tier='2']:checked, input[data-tier='3']:checked)
+    )
+    tr[data-tier='4']
+    .row-mark {
+    visibility: visible;
+  }
+
+  #custody-check:has(input[data-tier='4']:checked):not(
+      :has(input[data-tier='1']:checked, input[data-tier='2']:checked, input[data-tier='3']:checked)
+    )
+    .verdict-value
+    [data-level='4'] {
+    display: inline;
+  }
+}
+
+/* --- the cockpit panel --------------------------------------------------- */
+
+/* Five quiet constants against one loud variable. The asymmetry is the argument,
+   and it is carried by weight, size and space; the accent is not spent here. */
+.cockpit {
+  display: grid;
+  grid-template-columns: 5fr 3fr;
+  gap: var(--s6);
+  margin-block-start: var(--s6);
+  padding: var(--s6);
+  border-radius: var(--r3);
+  background: var(--surface);
+}
+
+.cockpit-constants li {
+  display: flex;
+  align-items: baseline;
+  font-size: var(--t-fine);
+  color: var(--ink-2);
+}
+
+.cockpit-constants li + li {
+  margin-block-start: var(--s3);
+}
+
+.cockpit-constants .label,
+.cockpit-variable .label {
+  margin-block-end: var(--s4);
+}
+
+.cockpit-variable {
+  padding-inline-start: var(--s6);
+  border-inline-start: 1px solid var(--rule);
+}
+
+.formats {
+  margin-block-start: var(--s6);
+}
+
+.formats > li {
+  padding-block: var(--s6);
+  border-block-start: 1px solid var(--rule);
+}
+
+.formats > li:last-child {
+  border-block-end: 1px solid var(--rule);
+}
+
+.named-block {
+  margin-block-start: var(--s9);
+}
+
+.formats .named-block {
+  margin-block-start: 0;
+}
+
+.named-block > h3 + p,
+.named-block > h4 + p {
+  margin-block-start: var(--s3);
+}
+
+.named-block p {
+  color: var(--ink-2);
+}
+
+.section > .named-block + .named-block {
+  padding-block-start: var(--s9);
+  border-block-start: 1px solid var(--rule);
+}
+
+.budget {
+  margin-block-start: var(--s5);
+  padding: var(--s4);
+  border-radius: var(--r2);
+  background: var(--surface);
+}
+
+.budget-num {
+  font-size: var(--t-h3);
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.budget-hedge {
+  margin-block-start: var(--s2);
+  font-size: var(--t-fine);
+  color: var(--ink-3);
+}
+
+/* --- outcomes, trade-offs, planning -------------------------------------- */
+
+/* The hairline is a 1px grid gap over the rule colour, so four cells read as one
+   field instead of four boxes. */
+.outcomes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin-block-start: var(--s6);
+  background: var(--rule);
+}
+
+.outcome {
+  padding: var(--s6);
+  background: var(--paper);
+}
+
+.outcome p {
+  margin-block-start: var(--s3);
+  color: var(--ink-2);
+}
+
+.tradeoffs {
+  margin-block-start: var(--s6);
+}
+
+.tradeoffs > li {
+  display: grid;
+  grid-template-columns: 224px minmax(0, 1fr);
+  gap: var(--s6);
+  padding-block: var(--s6);
+  border-block-start: 1px solid var(--rule);
+}
+
+.tradeoffs > li:last-child {
+  border-block-end: 1px solid var(--rule);
+}
+
+.tradeoff-title h3 {
+  font-size: var(--t-body);
+  letter-spacing: -0.01em;
+}
+
+.tradeoff-body p {
+  color: var(--ink-2);
+}
+
+/* The marker wraps onto its own line rather than being clipped: at 320px the
+   heading and a 200px monospace marker do not share a line. */
+.horizon {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2) var(--s5);
+  align-items: baseline;
+  justify-content: space-between;
+  margin-block-start: var(--s9);
+}
+
+.horizon .label {
+  flex: none;
+}
+
+.checklist {
+  margin-block-start: var(--s5);
+}
+
+.checklist > li {
+  display: grid;
+  grid-template-columns: var(--s8) minmax(0, 1fr);
+  padding-block: var(--s5);
+  border-block-start: 1px solid var(--rule);
+}
+
+.checklist > li:last-child {
+  border-block-end: 1px solid var(--rule);
+}
+
+/* A print affordance, not a control: a checkbox here would be an unlabelled
+   stateful input that prints unchecked and does nothing. */
+.checklist-rail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  align-items: flex-start;
+}
+
+.checklist-rail .glyph {
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  border-color: var(--rule-strong);
+  border-radius: var(--r1);
+}
+
+.back-link a {
+  color: var(--ink-3);
+  text-decoration-color: transparent;
+}
+
+.observations {
+  margin-block-start: var(--s6);
+}
+
+.observations > li {
+  padding-block: var(--s6);
+}
+
+.observations > li + li {
+  border-block-start: 1px solid var(--rule);
+}
+
+.observations .label {
+  margin-block-end: var(--s2);
+}
+
+.observations p {
+  color: var(--ink-2);
+}
+
+/* --- the fit table ------------------------------------------------------- */
+
+.table-block {
+  margin-block-start: var(--s7);
+}
+
+.fit-table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--t-fine);
+}
+
+.fit-table caption {
+  margin-block-end: var(--s4);
+  font-size: var(--t-fine);
+  color: var(--ink-3);
+  text-align: center;
+}
+
+.fit-table th,
+.fit-table td {
+  padding: var(--s3) var(--s4);
+  text-align: start;
+  vertical-align: top;
+  border-block-end: 1px solid var(--rule);
+}
+
+.fit-table thead th {
+  border-block-end: 1px solid var(--rule-strong);
+  font-family: var(--font-mono);
+  font-size: var(--t-kicker);
+  font-weight: 560;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.fit-table thead th:first-child {
+  width: 232px;
+}
+
+.fit-table tbody th {
+  color: var(--ink);
+  font-weight: 660;
+}
+
+.fit-table td {
+  color: var(--ink-2);
+}
+
+/* --- apparatus and sources ----------------------------------------------- */
+
+.apparatus {
+  margin-block-start: var(--s6);
+  padding: var(--s6);
+  border-radius: var(--r3);
+  background: var(--surface);
+}
+
+.apparatus-block + .apparatus-block {
+  margin-block-start: var(--s6);
+  padding-block-start: var(--s6);
+  border-block-start: 1px solid var(--rule);
+}
+
+.apparatus-block .label {
+  margin-block-end: var(--s3);
+}
+
+.apparatus-block p {
+  color: var(--ink-2);
+}
+
+.apparatus-date {
+  margin-block-start: var(--s3);
+  color: var(--ink-3);
+}
+
+.sources {
+  margin-block-start: var(--s6);
+}
+
+.sources > li {
+  display: grid;
+  grid-template-columns: var(--s8) minmax(0, 1fr);
+  padding-block-start: var(--s6);
+}
+
+.sources > li + li {
+  margin-block-start: var(--s6);
+  border-block-start: 1px solid var(--rule);
+}
+
+.source-num {
+  color: var(--ink-3);
+}
+
+.source-authors {
+  color: var(--ink-2);
+}
+
+.source-title {
+  margin-block-start: var(--s1);
+}
+
+.source-title a {
+  color: var(--ink);
+}
+
+.source-note {
+  color: var(--ink-3);
+  font-size: var(--t-fine);
+}
+
+.source-meta {
+  margin-block-start: var(--s2);
+  color: var(--ink-3);
+}
+
+/* A bare URL is the one string on this page that can outgrow its column, so it
+   is allowed to break anywhere rather than push a scrollbar onto the document. */
+.source-url {
+  margin-block-start: var(--s2);
+  overflow-wrap: anywhere;
+  font-size: var(--t-fine);
+  color: var(--ink-3);
+}
+
+.source-cited {
+  margin-block-start: var(--s3);
+  color: var(--ink-3);
+}
+
+.source-cited a {
+  color: var(--ink-3);
+}
+
+.cite-ref {
+  font-size: var(--t-fine);
+  color: var(--ink-3);
+}
+
+/* The marker is deliberately not accent-coloured: the accent means the level. */
+.cite-sup {
+  font-size: 0;
+  line-height: 0;
+  vertical-align: super;
+}
+
+.cite {
+  padding: 4px var(--s1);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--r1);
+  color: var(--ink-3);
+  text-decoration: none;
+}
+
+/* --- colophon ------------------------------------------------------------ */
+
+.colophon {
+  border-block-start: 1px solid var(--rule);
+}
+
+.colophon > .page {
+  padding-block: var(--s10);
+}
+
+.colophon-line {
+  color: var(--ink-2);
+}
+
+.action {
+  /* A grid item stretches by default, which would turn the page's one filled
+     action into a full-width bar. */
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  margin-block-start: var(--s6);
+  padding-inline: var(--s6);
+  border-radius: var(--r2);
+  background: var(--accent-deep);
+  color: var(--on-accent);
+  font-weight: 660;
+  text-decoration: none;
+  transition:
+    transform var(--fast) var(--ease),
+    background-color var(--fast) var(--ease);
+}
+
+.action:active {
+  transform: translateY(1px);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .action:hover {
+    background: var(--accent);
+  }
+}
+
+.related {
+  margin-block-start: var(--s9);
+  padding-block-start: var(--s6);
+  border-block-start: 1px solid var(--rule);
+}
+
+.related .label {
+  margin-block-end: var(--s2);
+}
+
+.related-summary {
+  margin-block-start: var(--s1);
+  font-size: var(--t-fine);
+  color: var(--ink-3);
+}
+
+.colophon-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s3) var(--s6);
+  margin-block-start: var(--s6);
+  color: var(--ink-3);
+}
+
+.colophon-links a {
+  display: inline-block;
+  min-height: 44px;
+  line-height: 44px;
+  padding-block: 0;
+}
+
+.colophon-meta {
+  margin-block-start: var(--s6);
+  color: var(--ink-3);
+}
+
+/* --- responsive recomposition -------------------------------------------- */
+
+/*
+ * The two-column reading shell.
+ *
+ * It starts at 1400px rather than 1240px because the rail, its gap and a plate
+ * wide enough to hold three criterion columns do not fit in less: a symmetric
+ * bleed can never reach past the rail gap, so a narrower shell would buy the
+ * rail by taking 60px out of every axis column. Below this the contents bar
+ * carries the same eighteen entries.
+ */
+@media screen and (min-width: 1400px) {
+  :root {
+    --rail-gap: 120px;
+    --break-cap: 96px;
+  }
+
+  .page,
+  .shell {
+    --cluster: calc(var(--rail) + var(--rail-gap) + var(--text-max));
+
+    grid-template-columns: var(--rail) var(--rail-gap) minmax(0, var(--text-max));
+  }
+
+  .page > *,
+  .shell > * {
+    grid-column: 3;
+  }
+
+  .rail {
+    display: block;
+    grid-column: 1;
+    position: sticky;
+    inset-block-start: var(--s7);
+    align-self: start;
+    max-height: calc(100vh - var(--s10));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-block: var(--s10) var(--s6);
+  }
+
+  .contents-bar {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1399px) {
+  .contents-bar {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 20;
+  }
+
+  h2[id],
+  h3[id] {
+    scroll-margin-block-start: calc(56px + var(--s6));
+  }
+}
+
+/* --- ≤820px: both tables recompose into blocks --------------------------- */
+
+/*
+ * One mechanism, both tables, one DOM.
+ *
+ * The measured reason: at 820px the plate's axis columns fall to about 190px,
+ * which sets a fourteen-word criterion at 23 characters a line and pushes a row
+ * past 200px tall. `<thead>` is never `display: none` here; it takes the
+ * visually-hidden recipe instead, so header association survives for a screen
+ * reader while the visual header disappears, and each cell shows its own column
+ * name for a sighted reader.
+ */
+@media screen and (max-width: 820px) {
+  .lattice,
+  .lattice tbody,
+  .lattice tr,
+  .lattice th,
+  .lattice td,
+  .fit-table,
+  .fit-table tbody,
+  .fit-table tr,
+  .fit-table th,
+  .fit-table td {
+    display: block;
+  }
+
+  .lattice thead,
+  .fit-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .fit-table caption {
+    display: block;
+    text-align: start;
+  }
+
+  .lattice tbody tr,
+  .fit-table tbody tr {
+    position: relative;
+    padding: var(--s4);
+    border: 1px solid var(--rule);
+    border-radius: var(--r2);
+    background: var(--surface);
+  }
+
+  .lattice tbody tr + tr,
+  .fit-table tbody tr + tr {
+    margin-block-start: var(--s4);
+  }
+
+  .lattice tbody th,
+  .lattice tbody td,
+  .fit-table tbody th,
+  .fit-table tbody td {
+    height: auto;
+    padding: 0;
+    border: 0;
+    background: none;
+  }
+
+  /* The wide cell rule is `.lattice td.axis`, which outranks the reset above, so
+     the grid's own hairlines are cleared by a selector of equal weight. */
+  .lattice tbody td.axis {
+    padding: 0;
+    border: 0;
+    background: none;
+  }
+
+  .lattice tbody th,
+  .fit-table tbody th {
+    padding-block-end: var(--s3);
+    margin-block-end: var(--s3);
+    border-block-end: 1px solid var(--rule);
+  }
+
+  /* The mark carries its own gap, so a cell without one starts its criterion on
+     the block's own content edge instead of a phantom indent. */
+  .lattice td.axis {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .lattice td.axis + td.axis,
+  .fit-table tbody td + td {
+    margin-block-start: var(--s4);
+  }
+
+  .cell-label {
+    display: block;
+    grid-column: 1 / -1;
+    margin-block-end: var(--s1);
+    color: var(--ink-3);
+  }
+
+  .lattice .mark {
+    position: static;
+    grid-column: 1;
+    margin-block-start: 6px;
+    margin-inline-end: var(--s3);
+  }
+
+  .criterion,
+  .above {
+    grid-column: 2;
+    padding-inline-start: 0;
+  }
+
+  /* The line becomes the block's leading edge, and the label carries its
+     identity: at 288px the end caps would land on the rounded corners. */
+  .lattice .line-row {
+    border-color: var(--accent-rule);
+    background-color: var(--surface);
+    background-image: linear-gradient(var(--accent-wash), var(--accent-wash));
+  }
+
+  .lattice .line-row::before {
+    content: '';
+    position: absolute;
+    inset-inline: -1px;
+    inset-block-start: -1px;
+    height: 2px;
+    border-start-start-radius: var(--r2);
+    border-start-end-radius: var(--r2);
+    background: var(--accent);
+  }
+
+  .lattice .line-row td.axis::after,
+  .lattice .line-row td.axis::before {
+    display: none;
+  }
+
+  .outcomes {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .tradeoffs > li {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s3);
+  }
+
+  .cockpit {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cockpit-variable {
+    padding-inline-start: 0;
+    border-inline-start: 0;
+  }
+}
+
+/* --- ≤700px: includes 390px portrait and 568 × 320 landscape ------------- */
+
+@media screen and (max-width: 700px) {
+  .moves-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .legend {
+    flex-direction: column;
+    gap: var(--s3);
+  }
+
+  .ledger > li,
+  .checklist > li,
+  .sources > li {
+    grid-template-columns: var(--s7) minmax(0, 1fr);
+  }
+
+  .figure,
+  .check,
+  .apparatus,
+  .definition,
+  .cockpit,
+  .exclusion {
+    padding: var(--s4);
+  }
+
+  .contents-bar {
+    position: static;
+  }
+}
+
+/* --- ≤430px: 390px portrait ---------------------------------------------- */
+
+@media screen and (max-width: 430px) {
+  :root {
+    --rhythm: 3.5rem;
+  }
+
+  .check {
+    padding: var(--s3);
+  }
+
+  /*
+   * The axis names step out of the header here and stay in the accessibility
+   * tree. A 320px viewport leaves each column about 50px, which cannot set
+   * "Formation" at any size this document uses, and three headers running into
+   * each other is the worse failure. The mapping is not lost: the axes ledger
+   * lists Axis 01 to 03 by name, the plate directly above labels every criterion
+   * with its axis, each radio is named "<axis>, <tier>", and the verdict names
+   * the limiting axis in words.
+   */
+  .check-corner {
+    width: 96px;
+  }
+
+  .check-head {
+    padding-inline: var(--s1);
+  }
+
+  .check-axis-name {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+/* --- ≤360px: 320px portrait ---------------------------------------------- */
+
+@media screen and (max-width: 360px) {
+  .mono {
+    font-size: 0.6875rem;
+    letter-spacing: 0.1em;
+  }
+
+  .check-tier {
+    padding-inline-end: var(--s2);
+  }
+}
+
+/* --- short landscape: 568 × 320 ------------------------------------------ */
+
+@media screen and (max-height: 460px) and (orientation: landscape) {
+  :root {
+    --rhythm: 40px;
+  }
+
+  .rail,
+  .contents-bar {
+    position: static;
+  }
+
+  .masthead-title {
+    padding-block: var(--s4);
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  .deck {
+    font-size: var(--t-body);
+  }
+}
+
+/* --- reduced motion ------------------------------------------------------ */
+
+/* Less movement, not less feedback: every state still changes, and the line
+   still appears; only the travel is removed. */
+@media (prefers-reduced-motion: reduce) {
+  .figure[data-draw='pending'] .line-row td.axis::after,
+  .figure[data-draw='done'] .line-row td.axis::after {
+    transform: none;
+    transition: opacity var(--fast) var(--ease);
+  }
+
+  .check td.axis::after,
+  .check td.axis::before {
+    transition: none;
+  }
+
+  .is-fresh {
+    animation: verdict-fade var(--base) var(--ease) both;
+  }
+
+  .cell:active {
+    transform: none;
+    background: var(--surface-2);
+  }
+
+  .action:active {
+    transform: none;
+  }
+
+  .skip {
+    transition: none;
+  }
+}
+
+@keyframes verdict-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* --- print --------------------------------------------------------------- */
+
+/*
+ * Print is a first-class output: the reader carries this into a planning
+ * meeting, and the instrument is the sheet a promotion committee marks up.
+ *
+ * A complete light palette is forced here because the screen scheme is dark
+ * only, and a black sheet is not an output. `print-color-adjust: exact` is spent
+ * on three things — the custody line and its caps, the instrument's custody bar,
+ * and the filled marks — so a mono printer loses nothing that is not also
+ * labelled in words.
+ */
+@page {
+  margin: 16mm;
+}
+
+@media print {
+  :root {
+    --paper: oklch(1 0 0);
+    --sheet: oklch(1 0 0);
+    --surface: oklch(0.968 0.004 245);
+    --surface-2: oklch(0.968 0.004 245);
+    --ink: oklch(0.2 0.012 250);
+    --ink-2: oklch(0.38 0.012 250);
+    --ink-3: oklch(0.48 0.014 250);
+    --rule: oklch(0.86 0.006 245);
+    --rule-strong: oklch(0.72 0.008 245);
+    --accent: oklch(0.45 0.12 220);
+    --accent-deep: oklch(0.45 0.12 220);
+    --accent-wash: oklch(0.45 0.12 220 / 0.08);
+    --accent-rule: oklch(0.45 0.12 220 / 0.45);
+  }
+
+  body {
+    background: #fff;
+    color: var(--ink);
+    font-size: 10.5pt;
+  }
+
+  /* The printable width is the page box, not the 704px reading column, and a
+     plate that bleeds past it loses its last axis to the paper edge. */
+  .page,
+  .shell {
+    max-width: none;
+    padding-inline: 0;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .page > *,
+  .shell > * {
+    grid-column: 1;
+  }
+
+  .bleed,
+  .masthead-band {
+    margin-inline: 0;
+  }
+
+  .skip,
+  .rail,
+  .contents-bar,
+  .move-links,
+  .check-note,
+  .check-reset,
+  .breadcrumb,
+  .related {
+    display: none;
+  }
+
+  .print-only {
+    display: block;
+  }
+
+  .moves-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s2);
+  }
+
+  .move {
+    padding: var(--s2) 0;
+    border: 0;
+    background: none;
+  }
+
+  /*
+   * Both tables print in their full four-column form. The narrow
+   * recomposition is scoped to `screen`, so paper never inherits a layout that
+   * was measured for a 320px viewport, and none of it has to be undone here.
+   */
+  .lattice .mark {
+    position: absolute;
+    print-color-adjust: exact;
+  }
+
+  .lattice .line-row::before {
+    display: none;
+  }
+
+  /* The line prints drawn. Its entrance is a scale transform the module arms on
+     load and releases when the plate reaches the viewport, so a reader who
+     prints before scrolling that far would otherwise get a plate with no line. */
+  .lattice .line-row td.axis::after,
+  .lattice .line-row td.axis::before {
+    display: block;
+    transform: none;
+    transition: none;
+    print-color-adjust: exact;
+  }
+
+  .figure[data-draw='pending'] .line-row td.axis::after {
+    transform: none;
+  }
+
+  /* The worksheet. Native radios are hidden because `appearance` is unreliable
+     across print engines, and each cell draws its own square instead. */
+  .cell input {
+    display: none;
+  }
+
+  .cell {
+    height: auto;
+    padding-block: var(--s2);
+    background: none;
+  }
+
+  .check .mark {
+    display: none;
+  }
+
+  .cell::before {
+    content: '';
+    width: 14px;
+    height: 14px;
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--r1);
+  }
+
+  .cell:has(input:checked)::before {
+    background: var(--ink-2);
+    print-color-adjust: exact;
+  }
+
+  .check .print-only {
+    margin-block-start: var(--s4);
+  }
+
+  .worksheet-line {
+    margin-block-start: var(--s4);
+    padding-block-end: var(--s5);
+    border-block-end: 1px solid var(--rule-strong);
+    color: var(--ink-3);
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  a[href^='http']::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.85em;
+    color: var(--ink-3);
+  }
+
+  /* The Sources section already prints every URL beside its entry. */
+  .source-title a::after {
+    content: none;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    break-after: avoid-page;
+  }
+
+  figure,
+  table,
+  tr,
+  li,
+  .well,
+  .apparatus,
+  .check,
+  .cockpit,
+  .sources > li {
+    break-inside: avoid;
+  }
+}
