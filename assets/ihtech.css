@@ -1328,28 +1328,6 @@ svg {
   font-size: var(--t-xs);
 }
 
-.footer-palette {
-  display: flex;
-  gap: 6px;
-  align-items: center;
-}
-
-.footer-palette span {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--blue);
-}
-
-.footer-palette span:nth-child(2) {
-  background: var(--mint);
-}
-
-.footer-palette span:nth-child(3) {
-  background: var(--bg);
-  border: 1px solid var(--line-strong);
-}
-
 /* ---------- Inner pages: crumbs, hub, 404 ---------- */
 .page-head {
   display: grid;
