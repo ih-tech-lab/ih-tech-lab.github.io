@@ -1,0 +1,63 @@
+/*
+ * Field guide theme for the 2026 ihtech.ba design system.
+ *
+ * Loaded after each guide's own stylesheet. The guides draw every colour and
+ * font from tokens on :root, so this file only re-points those tokens at the
+ * site palette (paper, cobalt, mint) and Poppins. Screen only: each guide
+ * keeps its own print theme.
+ */
+@media screen {
+  :root {
+    color-scheme: light;
+
+    --paper: #f5f4ef;
+    --sheet: #fbfbf8;
+    --surface: #ffffff;
+    --surface-2: #eceae3;
+
+    --ink: #0b1026;
+    --ink-2: #3a4058;
+    --ink-3: #6b7084;
+
+    --rule: #e0dfd7;
+    --rule-strong: #cbcac1;
+
+    --accent: #1030eb;
+    --accent-deep: #0c27c9;
+    --accent-wash: rgb(16 48 235 / 0.07);
+    --accent-rule: rgb(16 48 235 / 0.4);
+    --on-accent: #ffffff;
+
+    --font-sans: 'Poppins', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    letter-spacing: -0.032em;
+  }
+
+  .lockup-mark {
+    color: var(--accent);
+  }
+
+  /* The sticky first column of the fit table used a near-black edge shadow
+     tuned for the dark theme. */
+  .fit-table tbody th {
+    box-shadow: 8px 0 10px -8px rgb(11 16 38 / 0.12);
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+}

@@ -1,4 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="112" ry="112" fill="#2b3038"/>
-  <g transform="translate(106 106) scale(1.171875)"><path d="M16 16L188 16L152 92L92 92L92 152L16 188Z M240 16L240 188L164 152L164 92L104 92L68 16Z M240 240L68 240L104 164L164 164L164 104L240 68Z M16 240L16 68L92 104L92 164L152 164L188 240Z" fill="#ffffff" fill-rule="evenodd"/></g>
-</svg>

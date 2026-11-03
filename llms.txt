@@ -1,19 +1,19 @@
 # IH Tech
 
-> A team of AI experts that join yours. Technical authority, embedded delivery, AI enablement and agent architectures for teams in the EU, North America and the Middle East.
+> A team of AI experts that join yours. Technical advisory, embedded delivery, team enablement, and agent architectures for teams in the EU, North America, and the Middle East.
 
-IH Tech is an AI-native software consultancy in Sarajevo, Bosnia and Herzegovina.
+IH Tech is a team of senior AI engineers in Sarajevo, Bosnia and Herzegovina.
 Contact: info@ihtech.ba
 
-- **Technical authority** — We take the senior seat on the calls that are expensive to get wrong — feasibility, architecture, sequencing — and give you an answer you can act on rather than a deck.
-- **Part of your core team** — We embed. Your programme, your backlog, your standards — with senior people in it who have done the hard version before, and who are accountable for shipped work rather than advice.
-- **Enabling your teams** — The goal is that your engineers do this without us. We run the workshops, set the standards, and put the evaluation practice in place that makes AI-assisted delivery measurable instead of anecdotal.
-- **Agentic product development** — We design agent systems that do real work: separated planning, implementation and review roles, wired into the systems a business already runs. Discovery moves in days.
-- **Platform and tooling** — The leverage is usually in the tool nobody has built yet — migration tooling, evaluation platforms, and internal assistants wired into systems a company already pays for.
+- **Technical advisory**: We take the senior seat on decisions that are expensive to get wrong: feasibility, architecture, and sequencing. Your team leaves with an answer it can act on.
+- **Embedded teams**: Senior engineers join your program and work in your backlog, to your standards. They have done the hard version before, and they are accountable for shipped work.
+- **Team enablement**: The aim is for your engineers to do this work without us. We run the workshops, set the standards, and put in the evaluation practice that makes AI-assisted delivery measurable.
+- **Agentic products**: We design agent systems with separate planning, implementation, and review roles, connected to the systems a business already runs. Discovery runs in days.
+- **Platforms and tooling**: The biggest gain is often a tool nobody has built yet: migration tooling, evaluation platforms, and internal assistants connected to systems a company already pays for.
 
 ## Pages
 
-- [IH Tech — AI-native software consultancy in Sarajevo](https://ihtech.ba/): A team of AI experts that join yours. Technical authority, embedded delivery, AI enablement and agent architectures for teams in the EU, North America and the Middle East.
-- [Field guides: decision frameworks for engineering leaders](https://ihtech.ba/field-guides/): Practical decision frameworks for engineering leaders: what the decision is, the answer we would give, when it does not apply, and what to do next.
-- [Redesigning the engineering ladder for AI-native teams](https://ihtech.ba/field-guides/ai-native-leveling-ladder/): A custody-based leveling and hiring framework for the AI era: levels defined by what you can be accountable for, a standardized assessment cockpit, and a protected formation budget that keeps the junior-to-senior pipeline alive.
+- [IH Tech](https://ihtech.ba/): A team of AI experts that join yours. Technical advisory, embedded delivery, team enablement, and agent architectures for teams in the EU, North America, and the Middle East.
+- [Field guides: decision frameworks for engineering leaders](https://ihtech.ba/field-guides/): Decision frameworks for engineering leaders: the decision, the answer we would give, when it does not apply, and what to do next.
+- [Redesigning the engineering ladder for AI-native teams](https://ihtech.ba/field-guides/ai-native-leveling-ladder/): A custody-based leveling and hiring framework: levels defined by what an engineer can be accountable for, a standardized assessment cockpit, and a protected formation budget that keeps the junior-to-senior pipeline alive.
 - [Modernizing legacy systems with AI agents](https://ihtech.ba/field-guides/agentic-legacy-modernization/): A control-loop strategy for AI-agent modernization: structure first, plans as reviewed prompts, machine-generated parity evidence, and a clear fit test.

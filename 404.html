@@ -13,52 +13,108 @@ gtag('config', 'G-39840X1GXN');
 <title>Page not found · IH Tech</title>
 <meta name="description" content="That page is not on ihtech.ba. Continue from the homepage.">
 <meta name="robots" content="noindex,follow">
-<meta name="theme-color" content="#2b3038">
-<link rel="icon" href="/favicon.ico" sizes="32x32">
-<link rel="icon" href="/assets/logo-7a7caef5a5fd9ca7.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon-362ddfb00396e871.png">
-<link rel="stylesheet" href="/assets/shell-d6ede960e19396c7.css">
-<link rel="stylesheet" href="/assets/not-found-a229604de0eb7d7f.css">
+<meta name="theme-color" content="#f5f4ef">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="/assets/ihtech.css">
+<script>
+document.documentElement.classList.add('js');
+window.setTimeout(function () {
+  if (window.__ihReady !== true) document.documentElement.classList.remove('js');
+}, 3000);
+</script>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="ih-mark" viewBox="32 5 690 690">
+    <path d="M402 38H316C288 38 269 45 248 65L140 172C121 190 112 208 112 232V252C112 289 136 314 173 314H226C254 314 275 304 296 283L381 198C396 183 402 168 402 147V38Z"/>
+    <path d="M714 369V292C714 266 705 246 686 227L581 123C565 107 548 100 525 100H499C459 100 428 129 428 170V217C428 243 437 262 457 281L532 350C546 363 560 369 582 369H714Z"/>
+    <path d="M354 663H442C467 663 484 654 502 637L626 517C641 502 648 482 648 458C648 420 621 392 584 392H533C508 392 489 399 470 417L378 510C361 528 354 546 354 571V663Z"/>
+    <path d="M40 338V420C40 444 48 462 66 479L173 584C189 600 206 607 229 607H253C296 607 327 579 327 539V493C327 469 319 450 302 433L222 355C210 344 194 338 177 338H40Z"/>
+  </symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+</svg>
+
 <a class="skip" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="wrap">
-    <a class="lockup" href="/">
-      <img src="/assets/logo-7a7caef5a5fd9ca7.svg" width="30" height="30" alt="">
-      <span><b>IH</b> Tech</span>
+<header class="site-header" data-header>
+  <div class="wrap header-inner">
+    <a class="brand" href="/" aria-label="IH Tech, home">
+      <svg class="mark" aria-hidden="true"><use href="#ih-mark"/></svg>
+      <span class="wordmark" aria-hidden="true">IH<i>/</i>Tech</span>
     </a>
-    <nav class="site-nav" aria-label="Primary">
-      <a href="/#capabilities">Capabilities</a>
-      <a href="/#method">Approach</a>
-      <a href="/field-guides/">Field guides</a>
-      <a href="/#community">Open work</a>
-      <a href="/#contact">Contact</a>
+    <nav class="nav" id="site-nav" aria-label="Primary">
+      <a href="/#expertise">Expertise</a>
+      <a href="/#approach">Approach</a>
+      <a href="/field-guides/">Insights</a>
     </nav>
+    <a class="btn btn-outline btn-sm header-cta" href="/#contact">Let’s talk</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+      <span></span><span></span><span class="sr">Menu</span>
+    </button>
   </div>
 </header>
 
 <main id="main">
   <div class="wrap">
     <div class="not-found">
-      <p class="not-found-code">Error 404</p>
-      <h1>That page is not here.</h1>
-      <p>The link may be out of date, or the page may have moved.</p>
-      <div class="not-found-actions">
-        <a class="btn btn-primary" href="/">Go to the homepage</a>
-        <a class="btn btn-secondary" href="/field-guides/">Browse the field guides</a>
+      <div class="not-found-copy reveal">
+        <p class="code">404</p>
+        <h1>That page is not here.</h1>
+        <p class="lead">The link may be out of date, or the page may have moved.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/">Go to the homepage <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-outline" href="/field-guides/">Browse the field guides</a>
+        </div>
       </div>
+      <svg class="scatter" viewBox="32 5 690 690" aria-hidden="true" fill="currentColor">
+        <path d="M402 38H316C288 38 269 45 248 65L140 172C121 190 112 208 112 232V252C112 289 136 314 173 314H226C254 314 275 304 296 283L381 198C396 183 402 168 402 147V38Z"/>
+        <path d="M714 369V292C714 266 705 246 686 227L581 123C565 107 548 100 525 100H499C459 100 428 129 428 170V217C428 243 437 262 457 281L532 350C546 363 560 369 582 369H714Z"/>
+        <path d="M354 663H442C467 663 484 654 502 637L626 517C641 502 648 482 648 458C648 420 621 392 584 392H533C508 392 489 399 470 417L378 510C361 528 354 546 354 571V663Z"/>
+        <path d="M40 338V420C40 444 48 462 66 479L173 584C189 600 206 607 229 607H253C296 607 327 579 327 539V493C327 469 319 450 302 433L222 355C210 344 194 338 177 338H40Z"/>
+      </svg>
     </div>
   </div>
 </main>
 
 <footer class="site-footer">
   <div class="wrap">
-    <span>© IH Tech, Sarajevo, Bosnia and Herzegovina.</span>
-    <a href="https://github.com/ih-tech-lab" rel="noopener">GitHub</a>
-    <a class="spacer" href="mailto:info@ihtech.ba">info@ihtech.ba</a>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/" aria-label="IH Tech, home">
+          <svg class="mark" aria-hidden="true"><use href="#ih-mark"/></svg>
+          <span class="wordmark" aria-hidden="true">IH<i>/</i>Tech</span>
+        </a>
+        <p>Senior AI engineers in Sarajevo, Bosnia and Herzegovina, working with teams in the EU, North America, and the Middle East.</p>
+      </div>
+      <div class="footer-col">
+        <h2>Company</h2>
+        <ul>
+          <li><a href="/#expertise">Expertise</a></li>
+          <li><a href="/#approach">Approach</a></li>
+          <li><a href="/#regions">Regions</a></li>
+          <li><a href="/field-guides/">Insights</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:info@ihtech.ba">info@ihtech.ba</a></li>
+          <li><a href="https://github.com/ih-tech-lab" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© IH Tech, Sarajevo, Bosnia and Herzegovina.</span>
+      <span class="footer-palette" aria-hidden="true"><span></span><span></span><span></span></span>
+    </div>
   </div>
 </footer>
+
+<script type="module" src="/assets/ihtech.js"></script>
 </body>
 </html>
