@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ihtech.ba/</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-11-03</lastmod>
   </url>
   <url>
     <loc>https://ihtech.ba/field-guides/</loc>
@@ -15,5 +15,25 @@
   <url>
     <loc>https://ihtech.ba/field-guides/agentic-legacy-modernization/</loc>
     <lastmod>2026-08-16</lastmod>
+  </url>
+  <url>
+    <loc>https://ihtech.ba/case-studies/</loc>
+    <lastmod>2026-11-03</lastmod>
+  </url>
+  <url>
+    <loc>https://ihtech.ba/case-studies/maar-jewelry/</loc>
+    <lastmod>2026-11-03</lastmod>
+  </url>
+  <url>
+    <loc>https://ihtech.ba/case-studies/studio-as/</loc>
+    <lastmod>2026-11-03</lastmod>
+  </url>
+  <url>
+    <loc>https://ihtech.ba/case-studies/renote/</loc>
+    <lastmod>2026-11-03</lastmod>
+  </url>
+  <url>
+    <loc>https://ihtech.ba/case-studies/spin-rondo/</loc>
+    <lastmod>2026-11-03</lastmod>
   </url>
 </urlset>

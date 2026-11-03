@@ -17,3 +17,8 @@ Contact: info@ihtech.ba
 - [Field guides: decision frameworks for engineering leaders](https://ihtech.ba/field-guides/): Decision frameworks for engineering leaders: the decision, the answer we would give, when it does not apply, and what to do next.
 - [Redesigning the engineering ladder for AI-native teams](https://ihtech.ba/field-guides/ai-native-leveling-ladder/): A custody-based leveling and hiring framework: levels defined by what an engineer can be accountable for, a standardized assessment cockpit, and a protected formation budget that keeps the junior-to-senior pipeline alive.
 - [Modernizing legacy systems with AI agents](https://ihtech.ba/field-guides/agentic-legacy-modernization/): A control-loop strategy for AI-agent modernization: structure first, plans as reviewed prompts, machine-generated parity evidence, and a clear fit test.
+- [Case studies](https://ihtech.ba/case-studies/): Client projects and IH-Tech products in production, with what was built and where the figures come from.
+- [Maar Jewelry](https://ihtech.ba/case-studies/maar-jewelry/): A bilingual online shop for Maar Jewelry, with card payments and shipping to 14 countries.
+- [Studio AS](https://ihtech.ba/case-studies/studio-as/): One app for attendance, prepaid packages, and parent updates at a children’s sports studio in Sarajevo.
+- [re:note](https://ihtech.ba/case-studies/renote/): A Chrome side-panel notepad that keeps notes on the device, next to the page.
+- [Spin Rondo](https://ihtech.ba/case-studies/spin-rondo/): A random picker in three languages with cryptographic draws and live sessions.
