@@ -1,8 +1,8 @@
-# IH Tech
+# IH-Tech
 
 > A team of AI experts that join yours. Technical advisory, embedded delivery, team enablement, and agent architectures for teams in the EU, North America, and the Middle East.
 
-IH Tech is a team of senior AI engineers in Sarajevo, Bosnia and Herzegovina.
+IH-Tech is a team of senior AI engineers in Sarajevo, Bosnia and Herzegovina.
 Contact: info@ihtech.ba
 
 - **Technical advisory**: We take the senior seat on decisions that are expensive to get wrong: feasibility, architecture, and sequencing. Your team leaves with an answer it can act on.
@@ -13,7 +13,7 @@ Contact: info@ihtech.ba
 
 ## Pages
 
-- [IH Tech](https://ihtech.ba/): A team of AI experts that join yours. Technical advisory, embedded delivery, team enablement, and agent architectures for teams in the EU, North America, and the Middle East.
+- [IH-Tech](https://ihtech.ba/): A team of AI experts that join yours. Technical advisory, embedded delivery, team enablement, and agent architectures for teams in the EU, North America, and the Middle East.
 - [Field guides: decision frameworks for engineering leaders](https://ihtech.ba/field-guides/): Decision frameworks for engineering leaders: the decision, the answer we would give, when it does not apply, and what to do next.
 - [Redesigning the engineering ladder for AI-native teams](https://ihtech.ba/field-guides/ai-native-leveling-ladder/): A custody-based leveling and hiring framework: levels defined by what an engineer can be accountable for, a standardized assessment cockpit, and a protected formation budget that keeps the junior-to-senior pipeline alive.
 - [Modernizing legacy systems with AI agents](https://ihtech.ba/field-guides/agentic-legacy-modernization/): A control-loop strategy for AI-agent modernization: structure first, plans as reviewed prompts, machine-generated parity evidence, and a clear fit test.
