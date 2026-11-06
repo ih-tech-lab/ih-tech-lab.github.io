@@ -60,45 +60,9 @@ function mobileNav() {
   });
 }
 
-/** Screenshots marked [data-zoom] open full size in a lightbox; click or Esc closes it. */
-function lightbox() {
-  const shots = document.querySelectorAll('[data-zoom]');
-  if (!shots.length) return;
-  const box = document.createElement('div');
-  box.className = 'lightbox';
-  box.setAttribute('role', 'dialog');
-  box.setAttribute('aria-label', 'Enlarged screenshot');
-  const img = document.createElement('img');
-  img.alt = '';
-  box.appendChild(img);
-  document.body.appendChild(box);
-  const close = () => box.classList.remove('is-open');
-  for (const shot of shots) {
-    shot.setAttribute('tabindex', '0');
-    const open = () => {
-      const src = shot.querySelector('img');
-      img.src = shot.dataset.zoom || src.currentSrc || src.src;
-      img.alt = src.alt;
-      box.classList.add('is-open');
-    };
-    shot.addEventListener('click', open);
-    shot.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        open();
-      }
-    });
-  }
-  box.addEventListener('click', close);
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') close();
-  });
-}
-
 try {
   header();
   mobileNav();
-  lightbox();
   reveals();
   window.__ihReady = true;
 } catch (error) {
