@@ -17,3 +17,19 @@ Contact: info@ihtech.ba
 - [Field guides: decision frameworks for engineering leaders](https://ihtech.ba/field-guides/): Decision frameworks for engineering leaders: the decision, the answer we would give, when it does not apply, and what to do next.
 - [Redesigning the engineering ladder for AI-native teams](https://ihtech.ba/field-guides/ai-native-leveling-ladder/): A custody-based leveling and hiring framework: levels defined by what an engineer can be accountable for, a standardized assessment cockpit, and a protected formation budget that keeps the junior-to-senior pipeline alive.
 - [Modernizing legacy systems with AI agents](https://ihtech.ba/field-guides/agentic-legacy-modernization/): A control-loop strategy for AI-agent modernization: structure first, plans as reviewed prompts, machine-generated parity evidence, and a clear fit test.
+
+## AI agents
+
+Custom AI agents deployed inside the client’s infrastructure, AI models included; no outside AI service is called.
+
+- [Which AI agent does your team need?](https://ihtech.ba/ai-agents/): Ten AI agents for internal business processes, deployed inside your infrastructure.
+- [Customer Desk AI Agent](https://ihtech.ba/ai-agents/customer-desk-ai-agent/): Customer Desk AI Agent answers routine customer questions in seconds and routes the rest, so your support team handles more with the same people.
+- [Document AI Agent](https://ihtech.ba/ai-agents/document-ai-agent/): Document AI Agent checks contracts against your own rules, flags every renewal before its notice date and moves documents through approval in your company.
+- [System Guardian AI Agent](https://ihtech.ba/ai-agents/system-guardian-ai-agent/): System Guardian AI Agent groups alerts into incidents, finds the likely cause and runs only the fixes you approved, so your IT team is woken less often.
+- [Task AI Agent](https://ihtech.ba/ai-agents/task-ai-agent/): Task AI Agent turns requests from chat and email into tasks with an owner and a due date, follows up on overdue work and reports progress to every team.
+- [Sales AI Agent](https://ihtech.ba/ai-agents/sales-ai-agent/): Sales AI Agent prepares every meeting, drafts quotes from your own price lists and keeps the CRM current, so each rep gets five hours a week back for selling.
+- [Knowledge Guide AI Agent](https://ihtech.ba/ai-agents/knowledge-guide-ai-agent/): Knowledge Guide AI Agent answers employees’ questions from your intranet, policies and documents, with the source, so HR and IT get 40% fewer questions.
+- [People AI Agent](https://ihtech.ba/ai-agents/people-ai-agent/): People AI Agent answers HR questions from your own records and runs onboarding and leave requests, halving routine requests to HR while managers decide.
+- [Finance AI Agent](https://ihtech.ba/ai-agents/finance-ai-agent/): Finance AI Agent matches invoices to orders and deliveries, checks spend against policy and shortens month-end close, so your finance team pays on time.
+- [Meeting AI Agent](https://ihtech.ba/ai-agents/meeting-ai-agent/): Meeting AI Agent finds the time and the room, prepares briefs from your own systems and turns written notes into tasks, so every meeting ends in action.
+- [Data Analyst AI Agent](https://ihtech.ba/ai-agents/data-analyst-ai-agent/): Data Analyst AI Agent answers business questions in plain words from your own data, with the chart and the calculation, so managers stop waiting for reports.
