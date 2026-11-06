@@ -444,7 +444,7 @@ svg {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
   align-items: center;
   gap: 8px;
 }

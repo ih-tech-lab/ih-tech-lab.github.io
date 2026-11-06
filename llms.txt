@@ -2,11 +2,11 @@
 
 > A team of AI experts that join yours. Technical advisory, embedded delivery, team enablement, and agent architectures for teams in the EU, North America, and the Middle East.
 
-IH-Tech is a team of senior AI engineers in Sarajevo, Bosnia and Herzegovina.
+IH-Tech is a team of AI experts in Sarajevo, Bosnia and Herzegovina.
 Contact: info@ihtech.ba
 
 - **Technical advisory**: We take the senior seat on decisions that are expensive to get wrong: feasibility, architecture, and sequencing. Your team leaves with an answer it can act on.
-- **Embedded teams**: Senior engineers join your program and work in your backlog, to your standards. They have done the hard version before, and they are accountable for shipped work.
+- **Embedded teams**: AI experts join your program and work in your backlog, to your standards. They have done the hard version before, and they are accountable for shipped work.
 - **Team enablement**: The aim is for your engineers to do this work without us. We run the workshops, set the standards, and put in the evaluation practice that makes AI-assisted delivery measurable.
 - **Agentic products**: We design agent systems with separate planning, implementation, and review roles, connected to the systems a business already runs. Discovery runs in days.
 - **Platforms and tooling**: The biggest gain is often a tool nobody has built yet: migration tooling, evaluation platforms, and internal assistants connected to systems a company already pays for.
