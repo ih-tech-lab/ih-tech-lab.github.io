@@ -134,96 +134,90 @@ window.setTimeout(function () {
       <h2 class="h2">How six companies use the System Guardian AI Agent</h2>
       <p>Each one in short: the problem, the results, and how the agent handles the work.</p>
     </div>
-    <div class="cs4-list">
-      <article class="cs4 reveal" id="hospital-it">
-        <div class="cs4-copy">
-          <p class="cs4-meta"><span class="cs4-industry">Hospital IT</span><span class="cs4-badge cs4-badge--enterprise">Enterprise</span><span>Live in 7 weeks</span></p>
+    <div class="cs5-list">
+      <article class="cs5 reveal" id="hospital-it">
+        <header class="cs5-head">
           <h3>Lab results reach the wards again within 6 minutes</h3>
-          <dl class="cs4-ba">
-            <div><dt>Before</dt><dd>When something stalled at night, the on-call engineer was woken by dozens of separate alerts, had to sign in from home, search the logs and work out which of them mattered.</dd></div>
-            <div><dt>After</dt><dd>Results reach the wards again in minutes instead of about an hour and a half.</dd></div>
-          </dl>
-          <ul class="cs4-stats" aria-label="Results"><li><b>48 → 1</b><span>alerts turned into one incident</span></li><li><b>−70%</b><span>night-time pages</span></li><li><b>Every night written up by 08:00</b><span>The day team starts with a clear record of what happened and what to fix for good.</span></li></ul>
+          <p class="cs5-sub">When something stalled at night, the on-call engineer was woken by dozens of separate alerts, had to sign in from home, search the logs and work out which of them mattered.</p>
+          <p class="cs5-meta">Hospital IT · Enterprise, on their own servers · Live in 7 weeks</p>
+        </header>
+        <div class="cs5-body">
+          <figure class="cs5-fig" style="background:#f4f8f7">
+            <img src="/ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-hospital-it-1200.webp" srcset="/ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-hospital-it-1200.webp 1200w, /ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-hospital-it-2400.webp 2400w" sizes="(max-width: 1080px) 92vw, 700px" alt="Diagram: where System Guardian sits. Inside the hospital, ward staff and IT operations ask the agent. It watches the patient records system, the lab results link and the backup system, tells the on-call engineer and the clinical apps team, and passes the night&amp;#x27;s write-up to Meeting Agent for the morning handover. Short messages go out to Microsoft Teams and Jira." width="1200" height="585" loading="lazy" decoding="async">
+          </figure>
+          <ol class="cs5-how" aria-label="How the connections work"><li><span class="cs5-n">1</span><div><strong>Watches every system all night</strong><p>System Guardian checks the patient records system, the lab results link, internal servers and the nightly backup, and knows what a normal night looks like for each of them.</p></div></li><li><span class="cs5-n">2</span><div><strong>Turns a flood of alerts into one incident</strong><p>When the lab results link stalled at 02:40, it grouped 48 alerts from different servers into one incident and read the logs to find the cause: a stuck message queue with 1,284 results waiting.</p></div></li><li><span class="cs5-n">3</span><div><strong>Runs only the fixes the team approved</strong><p>Restarting that queue is a step the team had approved in advance, so the agent ran it, checked that results were reaching the wards again, and stopped there.</p></div></li><li><span class="cs5-n">4</span><div><strong>Tells the engineer and writes up the night</strong><p>The on-call engineer got one short message in Microsoft Teams instead of 48 alerts.</p></div></li></ol>
         </div>
-        <figure class="cs4-fig" style="background:#f4f8f7">
-          <img src="/ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-hospital-it-1200.webp" srcset="/ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-hospital-it-1200.webp 1200w, /ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-hospital-it-2400.webp 2400w" sizes="(max-width: 1080px) 92vw, 680px" alt="Diagram: where System Guardian sits. Inside the hospital, ward staff and IT operations ask the agent. It watches the patient records system, the lab results link and the backup system, tells the on-call engineer and the clinical apps team, and passes the night&amp;#x27;s write-up to Meeting Agent for the morning handover. Short messages go out to Microsoft Teams and Jira." width="1200" height="585" loading="lazy" decoding="async">
-        </figure>
-        <ol class="cs4-flow" aria-label="How the agent handles it"><li><span>1</span>Watches every system all night</li><li><span>2</span>Turns a flood of alerts into one incident</li><li><span>3</span>Runs only the fixes the team approved</li><li><span>4</span>Tells the engineer and writes up the night</li></ol>
+        <ul class="cs5-gains" aria-label="Gains"><li><b>6 min</b><span>to fix a stalled lab results link</span></li><li><b>48 → 1</b><span>alerts turned into one incident</span></li><li><b>−70%</b><span>night-time pages</span></li><li><b>Every night written up by 08:00</b><span>The day team starts with a clear record of what happened and what to fix for good.</span></li></ul>
       </article>
-      <article class="cs4 reveal cs4--flip" id="bank-infrastructure">
-        <div class="cs4-copy">
-          <p class="cs4-meta"><span class="cs4-industry">Banking infrastructure</span><span class="cs4-badge cs4-badge--enterprise">Enterprise</span><span>Live in 6 weeks</span></p>
+      <article class="cs5 reveal" id="bank-infrastructure">
+        <header class="cs5-head">
           <h3>Quarterly access reviews in 9 days, not 6 weeks</h3>
-          <dl class="cs4-ba">
-            <div><dt>Before</dt><dd>Access lived in four places: the identity directory, Okta, the core banking system&#x27;s own user list and a handful of file shares and server admin groups.</dd></div>
-            <div><dt>After</dt><dd>Down from six weeks, because managers only see the few items that need a decision.</dd></div>
-          </dl>
-          <ul class="cs4-stats" aria-label="Results"><li class="is-text"><b>Nightly checks instead of quarterly ones</b></li><li><b>0</b><span>access removed without sign-off</span></li><li><b>100%</b><span>of decisions with evidence</span></li></ul>
+          <p class="cs5-sub">Access lived in four places: the identity directory, Okta, the core banking system&#x27;s own user list and a handful of file shares and server admin groups.</p>
+          <p class="cs5-meta">Banking infrastructure · Enterprise, on their own servers · Live in 6 weeks</p>
+        </header>
+        <div class="cs5-body">
+          <figure class="cs5-fig" style="background:#f4f8f7">
+            <img src="/ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-bank-infrastructure-1200.webp" srcset="/ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-bank-infrastructure-1200.webp 1200w, /ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-bank-infrastructure-2400.webp 2400w" sizes="(max-width: 1080px) 92vw, 700px" alt="Diagram: where System Guardian sits. Inside the bank, the infrastructure team and internal audit ask the agent. It compares the identity directory, the core banking user list and the HR leavers list, looks up Okta, sends sign-off questions to line managers in Microsoft Teams, raises risks with security and checks leavers with People Agent." width="1200" height="585" loading="lazy" decoding="async">
+          </figure>
+          <ol class="cs5-how" aria-label="How the connections work"><li><span class="cs5-n">1</span><div><strong>Compares every account, every night</strong><p>System Guardian reads the identity directory, Okta, the core banking users and the HR leavers list, and builds one picture of who has access to what, instead of a quarterly export.</p></div></li><li><span class="cs5-n">2</span><div><strong>Flags only what looks wrong</strong><p>It highlights people who have left but are still active, contractors whose contracts ended, accounts unused for 90 days or more and admin rights a person&#x27;s current role doesn&#x27;t need.</p></div></li><li><span class="cs5-n">3</span><div><strong>Asks each manager a short question</strong><p>Each manager gets a short list in Microsoft Teams with the reason for every item, and decides Keep or Remove.</p></div></li><li><span class="cs5-n">4</span><div><strong>Removes access after sign-off and keeps the evidence</strong><p>Only after a manager signs off does the agent remove the access, using the steps the team approved.</p></div></li></ol>
         </div>
-        <figure class="cs4-fig" style="background:#f4f8f7">
-          <img src="/ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-bank-infrastructure-1200.webp" srcset="/ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-bank-infrastructure-1200.webp 1200w, /ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-bank-infrastructure-2400.webp 2400w" sizes="(max-width: 1080px) 92vw, 680px" alt="Diagram: where System Guardian sits. Inside the bank, the infrastructure team and internal audit ask the agent. It compares the identity directory, the core banking user list and the HR leavers list, looks up Okta, sends sign-off questions to line managers in Microsoft Teams, raises risks with security and checks leavers with People Agent." width="1200" height="585" loading="lazy" decoding="async">
-        </figure>
-        <ol class="cs4-flow" aria-label="How the agent handles it"><li><span>1</span>Compares every account, every night</li><li><span>2</span>Flags only what looks wrong</li><li><span>3</span>Asks each manager a short question</li><li><span>4</span>Removes access after sign-off and keeps the evidence</li></ol>
+        <ul class="cs5-gains" aria-label="Gains"><li><b>9 days</b><span>for the quarterly review</span></li><li class="is-text"><b>Nightly checks instead of quarterly ones</b></li><li><b>0</b><span>access removed without sign-off</span></li><li><b>100%</b><span>of decisions with evidence</span></li></ul>
       </article>
-      <article class="cs4 reveal" id="ecommerce-peak">
-        <div class="cs4-copy">
-          <p class="cs4-meta"><span class="cs4-industry">E-commerce</span><span class="cs4-badge cs4-badge--cloud">Cloud</span><span>Live in 3 weeks</span></p>
+      <article class="cs5 reveal" id="ecommerce-peak">
+        <header class="cs5-head">
           <h3>Checkout slowdowns fixed in 10 minutes, not 40</h3>
-          <dl class="cs4-ba">
-            <div><dt>Before</dt><dd>In the previous year&#x27;s sale, a release slowed down the payment step.</dd></div>
-            <div><dt>After</dt><dd>Down from forty minutes the year before, because the cause arrives with the alert.</dd></div>
-          </dl>
-          <ul class="cs4-stats" aria-label="Results"><li><b>9×</b><span>normal traffic handled</span></li><li><b>1</b><span>click to approve a rollback</span></li><li><b>99.98%</b><span>checkout availability on sale day</span></li></ul>
+          <p class="cs5-sub">In the previous year&#x27;s sale, a release slowed down the payment step.</p>
+          <p class="cs5-meta">E-commerce · Cloud, run for them · Live in 3 weeks</p>
+        </header>
+        <div class="cs5-body">
+          <figure class="cs5-fig" style="background:#f4f8f7">
+            <img src="/ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-ecommerce-peak-1200.webp" srcset="/ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-ecommerce-peak-1200.webp 1200w, /ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-ecommerce-peak-2400.webp 2400w" sizes="(max-width: 1080px) 92vw, 700px" alt="Diagram: where System Guardian sits. The agent runs in a private cloud for the retailer. On-call engineers and site reliability ask the agent. It watches checkout and the order database, looks up Datadog and AWS, asks the engineer on duty in Slack before a rollback and tells Customer Desk when checkout is slow." width="1200" height="585" loading="lazy" decoding="async">
+          </figure>
+          <ol class="cs5-how" aria-label="How the connections work"><li><span class="cs5-n">1</span><div><strong>Watches checkout as one service</strong><p>System Guardian reads Datadog and Grafana for every part of checkout, so it sees a slow payment step as a checkout problem, not as dozens of separate alerts.</p></div></li><li><span class="cs5-n">2</span><div><strong>Handles routine fixes on its own</strong><p>When the cache disk reached 95% at 10:12, it cleared expired items before pages slowed.</p></div></li><li><span class="cs5-n">3</span><div><strong>Finds the cause and asks before acting</strong><p>At 14:05 the payment step slowed from 0.4 to 2.8 seconds right after release 4.18.</p></div></li><li><span class="cs5-n">4</span><div><strong>Fixes, checks and writes it up</strong><p>The agent rolled back through the team&#x27;s usual release steps in GitHub, watched checkout for ten minutes to confirm it was back to normal, and drafted the write-up for the next morning.</p></div></li></ol>
         </div>
-        <figure class="cs4-fig" style="background:#f4f8f7">
-          <img src="/ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-ecommerce-peak-1200.webp" srcset="/ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-ecommerce-peak-1200.webp 1200w, /ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-ecommerce-peak-2400.webp 2400w" sizes="(max-width: 1080px) 92vw, 680px" alt="Diagram: where System Guardian sits. The agent runs in a private cloud for the retailer. On-call engineers and site reliability ask the agent. It watches checkout and the order database, looks up Datadog and AWS, asks the engineer on duty in Slack before a rollback and tells Customer Desk when checkout is slow." width="1200" height="585" loading="lazy" decoding="async">
-        </figure>
-        <ol class="cs4-flow" aria-label="How the agent handles it"><li><span>1</span>Watches checkout as one service</li><li><span>2</span>Handles routine fixes on its own</li><li><span>3</span>Finds the cause and asks before acting</li><li><span>4</span>Fixes, checks and writes it up</li></ol>
+        <ul class="cs5-gains" aria-label="Gains"><li><b>10 min</b><span>from slowdown to normal</span></li><li><b>9×</b><span>normal traffic handled</span></li><li><b>1</b><span>click to approve a rollback</span></li><li><b>99.98%</b><span>checkout availability on sale day</span></li></ul>
       </article>
-      <article class="cs4 reveal cs4--flip" id="manufacturing-plants">
-        <div class="cs4-copy">
-          <p class="cs4-meta"><span class="cs4-industry">Manufacturing</span><span class="cs4-badge cs4-badge--enterprise">Enterprise</span><span>Live in 5 weeks</span></p>
+      <article class="cs5 reveal" id="manufacturing-plants">
+        <header class="cs5-head">
           <h3>Security fixes in 4 days, without stopping a line</h3>
-          <dl class="cs4-ba">
-            <div><dt>Before</dt><dd>Patching a line&#x27;s servers while it runs can stop production, so the IT team waited for weekend shutdowns.</dd></div>
-            <div><dt>After</dt><dd>Fixes go in at the next planned stop instead of waiting for a weekend shutdown.</dd></div>
-          </dl>
-          <ul class="cs4-stats" aria-label="Results"><li><b>0</b><span>unplanned line stops</span></li><li><b>100%</b><span>of windows backed up first</span></li><li><b>−70%</b><span>night and weekend work</span></li></ul>
+          <p class="cs5-sub">Patching a line&#x27;s servers while it runs can stop production, so the IT team waited for weekend shutdowns.</p>
+          <p class="cs5-meta">Manufacturing · Enterprise, on their own servers · Live in 5 weeks</p>
+        </header>
+        <div class="cs5-body">
+          <figure class="cs5-fig" style="background:#f4f8f7">
+            <img src="/ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-manufacturing-plants-1200.webp" srcset="/ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-manufacturing-plants-1200.webp 1200w, /ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-manufacturing-plants-2400.webp 2400w" sizes="(max-width: 1080px) 92vw, 700px" alt="Diagram: where System Guardian sits. Inside the plant, plant IT and production ask the agent. It reads the production line system, the shift plan and the backup system, asks the plant manager to approve each window, patches the plant servers and hands patch records to Document Agent. Only short approval and progress messages go out to Microsoft Teams and Jira." width="1200" height="585" loading="lazy" decoding="async">
+          </figure>
+          <ol class="cs5-how" aria-label="How the connections work"><li><span class="cs5-n">1</span><div><strong>Finds the right moment</strong><p>When a security fix is released, the agent checks the asset register for affected servers and the shift plan for the next planned stops, such as cleaning breaks and shift changes.</p></div></li><li><span class="cs5-n">2</span><div><strong>Asks the plant manager</strong><p>It proposes one window per line in Microsoft Teams, with the servers, the expected time and the backup status.</p></div></li><li><span class="cs5-n">3</span><div><strong>Checks, then patches one line</strong><p>Before starting, it confirms the backup system holds a fresh copy and the line is really stopped.</p></div></li><li><span class="cs5-n">4</span><div><strong>Confirms the line is healthy, then moves on</strong><p>The agent waits until the production line system reports the line ready, posts progress to Teams, logs the change in Jira and only then moves to the next line.</p></div></li></ol>
         </div>
-        <figure class="cs4-fig" style="background:#f4f8f7">
-          <img src="/ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-manufacturing-plants-1200.webp" srcset="/ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-manufacturing-plants-1200.webp 1200w, /ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-manufacturing-plants-2400.webp 2400w" sizes="(max-width: 1080px) 92vw, 680px" alt="Diagram: where System Guardian sits. Inside the plant, plant IT and production ask the agent. It reads the production line system, the shift plan and the backup system, asks the plant manager to approve each window, patches the plant servers and hands patch records to Document Agent. Only short approval and progress messages go out to Microsoft Teams and Jira." width="1200" height="585" loading="lazy" decoding="async">
-        </figure>
-        <ol class="cs4-flow" aria-label="How the agent handles it"><li><span>1</span>Finds the right moment</li><li><span>2</span>Asks the plant manager</li><li><span>3</span>Checks, then patches one line</li><li><span>4</span>Confirms the line is healthy, then moves on</li></ol>
+        <ul class="cs5-gains" aria-label="Gains"><li><b>4 days</b><span>to patch after a release</span></li><li><b>0</b><span>unplanned line stops</span></li><li><b>100%</b><span>of windows backed up first</span></li><li><b>−70%</b><span>night and weekend work</span></li></ul>
       </article>
-      <article class="cs4 reveal" id="university-it">
-        <div class="cs4-copy">
-          <p class="cs4-meta"><span class="cs4-industry">Higher education</span><span class="cs4-badge cs4-badge--cloud">Cloud</span><span>Live in 3 weeks</span></p>
+      <article class="cs5 reveal" id="university-it">
+        <header class="cs5-head">
           <h3>78% of first-week requests done in under a minute</h3>
-          <dl class="cs4-ba">
-            <div><dt>Before</dt><dd>In the first week of term, the desk&#x27;s queue grew to over two days.</dd></div>
-            <div><dt>After</dt><dd>Routine requests no longer wait in a queue behind everything else.</dd></div>
-          </dl>
-          <ul class="cs4-stats" aria-label="Results"><li><b>2,456</b><span>requests in week one</span></li><li><b>Same day</b><span>approval for unusual access</span></li><li><b>0</b><span>access outside the rules</span></li></ul>
+          <p class="cs5-sub">In the first week of term, the desk&#x27;s queue grew to over two days.</p>
+          <p class="cs5-meta">Higher education · Cloud, run for them · Live in 3 weeks</p>
+        </header>
+        <div class="cs5-body">
+          <figure class="cs5-fig" style="background:#f4f8f7">
+            <img src="/ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-university-it-1200.webp" srcset="/ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-university-it-1200.webp 1200w, /ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-university-it-2400.webp 2400w" sizes="(max-width: 1080px) 92vw, 700px" alt="Diagram: where System Guardian sits. The agent runs in a private cloud for the university. Lecturers, staff and student workers ask the agent. It uses the room and asset list and lab software, checks Okta and Google, sends unusual requests to approvers in Microsoft Teams, hardware faults to technicians in Jira and how-to questions to Knowledge Guide." width="1200" height="585" loading="lazy" decoding="async">
+          </figure>
+          <ol class="cs5-how" aria-label="How the connections work"><li><span class="cs5-n">1</span><div><strong>Checks who is asking</strong><p>The agent confirms the person in Okta: their department, role and start date.</p></div></li><li><span class="cs5-n">2</span><div><strong>Does the routine work on its own</strong><p>Account unlocks, password resets, standard lab software and course drives are done in under a minute, within the rules the desk agreed, and logged.</p></div></li><li><span class="cs5-n">3</span><div><strong>Sends unusual requests to the right approver</strong><p>Admin rights, research data and anything outside the rules go to the person who owns that decision, in Teams, with the reason and what the person&#x27;s colleagues already have.</p></div></li><li><span class="cs5-n">4</span><div><strong>Hands hardware faults to a technician</strong><p>A broken projector or lab PC becomes a Jira ticket with the room, the asset and what has already been tried, so the technician arrives with the right part.</p></div></li></ol>
         </div>
-        <figure class="cs4-fig" style="background:#f4f8f7">
-          <img src="/ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-university-it-1200.webp" srcset="/ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-university-it-1200.webp 1200w, /ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-university-it-2400.webp 2400w" sizes="(max-width: 1080px) 92vw, 680px" alt="Diagram: where System Guardian sits. The agent runs in a private cloud for the university. Lecturers, staff and student workers ask the agent. It uses the room and asset list and lab software, checks Okta and Google, sends unusual requests to approvers in Microsoft Teams, hardware faults to technicians in Jira and how-to questions to Knowledge Guide." width="1200" height="585" loading="lazy" decoding="async">
-        </figure>
-        <ol class="cs4-flow" aria-label="How the agent handles it"><li><span>1</span>Checks who is asking</li><li><span>2</span>Does the routine work on its own</li><li><span>3</span>Sends unusual requests to the right approver</li><li><span>4</span>Hands hardware faults to a technician</li></ol>
+        <ul class="cs5-gains" aria-label="Gains"><li><b>2,456</b><span>requests in week one</span></li><li><b>78%</b><span>done in under a minute</span></li><li><b>Same day</b><span>approval for unusual access</span></li><li><b>0</b><span>access outside the rules</span></li></ul>
       </article>
-      <article class="cs4 reveal cs4--flip" id="saas-on-call">
-        <div class="cs4-copy">
-          <p class="cs4-meta"><span class="cs4-industry">Software</span><span class="cs4-badge cs4-badge--cloud">Cloud</span><span>Live in 4 weeks</span></p>
+      <article class="cs5 reveal" id="saas-on-call">
+        <header class="cs5-head">
           <h3>86% fewer night-time interruptions for engineers on duty</h3>
-          <dl class="cs4-ba">
-            <div><dt>Before</dt><dd>One failing database could set off two hundred alerts, and each could page the on-call engineer.</dd></div>
-            <div><dt>After</dt><dd>On-call engineers are woken only when a problem really needs a person.</dd></div>
-          </dl>
-          <ul class="cs4-stats" aria-label="Results"><li><b>93%</b><span>of alerts merged</span></li><li><b>8 min</b><span>to recover from a known issue</span></li><li><b>20 min</b><span>to a reviewed write-up</span></li></ul>
+          <p class="cs5-sub">One failing database could set off two hundred alerts, and each could page the on-call engineer.</p>
+          <p class="cs5-meta">Software · Cloud, run for them · Live in 4 weeks</p>
+        </header>
+        <div class="cs5-body">
+          <figure class="cs5-fig" style="background:#f4f8f7">
+            <img src="/ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-saas-on-call-1200.webp" srcset="/ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-saas-on-call-1200.webp 1200w, /ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-saas-on-call-2400.webp 2400w" sizes="(max-width: 1080px) 92vw, 700px" alt="Diagram: where System Guardian sits. The agent runs in a private cloud for the software company. On-call engineers and site reliability ask the agent. It watches the product services and runs approved runbooks, looks up Datadog and GitHub, pages the on-call rota in PagerDuty only when needed and hands incident follow-ups to Task Agent." width="1200" height="585" loading="lazy" decoding="async">
+          </figure>
+          <ol class="cs5-how" aria-label="How the connections work"><li><span class="cs5-n">1</span><div><strong>Groups duplicate alerts</strong><p>Alerts that share a cause, such as every service that depends on one slow database, become one problem with one owner instead of hundreds of pages.</p></div></li><li><span class="cs5-n">2</span><div><strong>Checks what changed</strong><p>For each problem it looks at recent releases in GitHub, new error reports in Sentry and the service&#x27;s charts in Datadog, and writes a short summary of what it found.</p></div></li><li><span class="cs5-n">3</span><div><strong>Fixes known issues, pages for the rest</strong><p>If an approved runbook matches, such as restarting a stuck worker, it runs it and confirms the service recovered.</p></div></li><li><span class="cs5-n">4</span><div><strong>Drafts the write-up</strong><p>After a real incident, it drafts the review from the Slack thread, the release history and the charts: timeline, cause and follow-ups, created as Jira tasks once the engineer approves.</p></div></li></ol>
         </div>
-        <figure class="cs4-fig" style="background:#f4f8f7">
-          <img src="/ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-saas-on-call-1200.webp" srcset="/ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-saas-on-call-1200.webp 1200w, /ai-agents/system-guardian-ai-agent/system-guardian-ai-agent-case-study-saas-on-call-2400.webp 2400w" sizes="(max-width: 1080px) 92vw, 680px" alt="Diagram: where System Guardian sits. The agent runs in a private cloud for the software company. On-call engineers and site reliability ask the agent. It watches the product services and runs approved runbooks, looks up Datadog and GitHub, pages the on-call rota in PagerDuty only when needed and hands incident follow-ups to Task Agent." width="1200" height="585" loading="lazy" decoding="async">
-        </figure>
-        <ol class="cs4-flow" aria-label="How the agent handles it"><li><span>1</span>Groups duplicate alerts</li><li><span>2</span>Checks what changed</li><li><span>3</span>Fixes known issues, pages for the rest</li><li><span>4</span>Drafts the write-up</li></ol>
+        <ul class="cs5-gains" aria-label="Gains"><li><b>−86%</b><span>night-time pages</span></li><li><b>93%</b><span>of alerts merged</span></li><li><b>8 min</b><span>to recover from a known issue</span></li><li><b>20 min</b><span>to a reviewed write-up</span></li></ul>
       </article>
     </div>
     <p class="cs2-note reveal">Illustrative scenarios with unnamed companies. The figures show the kind of improvement each setup is designed to deliver; actual results depend on volume, the systems connected and how the agent is configured.</p>
