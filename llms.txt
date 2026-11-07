@@ -20,9 +20,9 @@ Contact: info@ihtech.ba
 
 ## AI agents
 
-Custom AI agents deployed inside the client’s infrastructure, AI models included; no outside AI service is called.
+Ten AI agents for internal business processes. They run with their AI models inside the client’s infrastructure; no outside AI service is called.
 
-- [Which AI agent does your team need?](https://ihtech.ba/ai-agents/): Ten AI agents for internal business processes, deployed inside your infrastructure.
+- [Private AI agents inside your infrastructure](https://ihtech.ba/ai-agents/): Ten AI agents for banks, healthcare and the public sector, configured to your needs and run inside your infrastructure. Nothing leaves your network.
 - [Customer Desk AI Agent](https://ihtech.ba/ai-agents/customer-desk-ai-agent/): Customer Desk AI Agent answers routine customer questions in seconds and routes the rest, so your support team handles more with the same people.
 - [Document AI Agent](https://ihtech.ba/ai-agents/document-ai-agent/): Document AI Agent checks contracts against your own rules, flags every renewal before its notice date and moves documents through approval in your company.
 - [System Guardian AI Agent](https://ihtech.ba/ai-agents/system-guardian-ai-agent/): System Guardian AI Agent groups alerts into incidents, finds the likely cause and runs only the fixes you approved, so your IT team is woken less often.
